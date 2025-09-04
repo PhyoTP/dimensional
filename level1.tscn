@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://b78x13714oket"]
+[gd_scene load_steps=18 format=4 uid="uid://b78x13714oket"]
 
 [ext_resource type="PackedScene" uid="uid://ywoaa20y4cqj" path="res://character_body_3d.tscn" id="1_jwv3a"]
 [ext_resource type="PackedScene" uid="uid://ymr7e85bwtco" path="res://3dblock.tscn" id="2_dopym"]
 [ext_resource type="Material" uid="uid://d0wdyqnhd863d" path="res://2dconverter.tres" id="3_ootpb"]
 [ext_resource type="Script" uid="uid://bf1x5hfd0eq3x" path="res://2_dconverter.gd" id="3_v38iq"]
+[ext_resource type="Script" uid="uid://bgekkkv30gq0m" path="res://2_denemy.gd" id="5_v8kj3"]
+[ext_resource type="PackedScene" uid="uid://gldptvit1t1c" path="res://3dborder.tscn" id="6_crycw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwv3a"]
 albedo_color = Color(0.411765, 0.290196, 0.239216, 1)
@@ -543,6 +545,18 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_q7ida")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v38iq"]
+albedo_color = Color(0.466667, 0.0745098, 0.909804, 1)
+metallic = 1.0
+roughness = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_v8kj3"]
+material = SubResource("StandardMaterial3D_v38iq")
+height = 0.001
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_crycw"]
+size = Vector3(1, 0.1, 1)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -558,7 +572,7 @@ mesh = SubResource("BoxMesh_lgp48")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_jwv3a")
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("1_jwv3a")]
+[node name="CharacterBody3D" parent="." groups=["player"] instance=ExtResource("1_jwv3a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4204, 2.55549, 10.8127)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -647,3 +661,25 @@ surface_material_override/19 = ExtResource("3_ootpb")
 surface_material_override/20 = ExtResource("3_ootpb")
 surface_material_override/21 = ExtResource("3_ootpb")
 surface_material_override/22 = ExtResource("3_ootpb")
+
+[node name="2denemy" type="Area3D" parent="." groups=["enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.462, 0.5, -10.112)
+script = ExtResource("5_v8kj3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="2denemy"]
+mesh = SubResource("CylinderMesh_v8kj3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="2denemy"]
+shape = SubResource("BoxShape3D_crycw")
+
+[node name="block16" parent="." instance=ExtResource("6_crycw")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -30, 0, 0)
+
+[node name="block17" parent="." instance=ExtResource("6_crycw")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 30, 0, 0)
+
+[node name="block18" parent="." instance=ExtResource("6_crycw")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 30)
+
+[node name="block19" parent="." instance=ExtResource("6_crycw")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, -30)

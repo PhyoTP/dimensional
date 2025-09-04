@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://gldptvit1t1c"]
+
+[ext_resource type="PackedScene" uid="uid://ymr7e85bwtco" path="res://3dblock.tscn" id="1_y0yij"]
+
+[node name="block" instance=ExtResource("1_y0yij")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+
+[node name="MeshInstance3D" parent="." index="1"]
+visible = false

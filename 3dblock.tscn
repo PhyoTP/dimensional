@@ -9,7 +9,7 @@ albedo_color = Color(0.909804, 0.317647, 0.0705882, 1)
 metallic_specular = 1.0
 roughness = 0.25
 
-[node name="block" type="StaticBody3D"]
+[node name="block" type="StaticBody3D" groups=["block"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_dopym")

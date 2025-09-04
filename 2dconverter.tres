@@ -3,4 +3,5 @@
 [resource]
 albedo_color = Color(0.0745098, 0.909804, 0.796078, 1)
 roughness = 0.2
-backlight = Color(1, 1, 1, 1)
+backlight_enabled = true
+backlight = Color(0.101961, 0.101961, 0.101961, 1)

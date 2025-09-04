@@ -36,7 +36,10 @@ var is_controlled = true
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)  # locks the mouse
+
 func _input(event):
+	if abs(position.y-1.5) <= 0.1:
+		get_tree().call_group("enemy", "player_on_ground")
 	if event is InputEventMouseMotion and is_controlled:
 		 # Horizontal rotation (yaw)
 		yaw -= event.relative.x * mouse_sensitivity

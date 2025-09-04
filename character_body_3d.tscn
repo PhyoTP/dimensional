@@ -19,5 +19,5 @@ mesh = SubResource("CylinderMesh_fb3t6")
 shape = SubResource("CylinderShape3D_vd578")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.6)
 current = true
