@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b7y18yllnp2n1"]
+
+[ext_resource type="FontFile" uid="uid://dbosyxwmsewxo" path="res://Retro Gaming.ttf" id="1_7o5h2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7o5h2"]
+bg_color = Color(0.909804, 0.317647, 0.0705882, 1)
+
+[resource]
+default_font = ExtResource("1_7o5h2")
+default_font_size = 32
+Button/styles/hover = SubResource("StyleBoxFlat_7o5h2")
