@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b78x13714oket"]
+[gd_scene load_steps=13 format=4 uid="uid://b78x13714oket"]
 
 [ext_resource type="PackedScene" uid="uid://ywoaa20y4cqj" path="res://character_body_3d.tscn" id="1_jwv3a"]
 [ext_resource type="PackedScene" uid="uid://ymr7e85bwtco" path="res://3dblock.tscn" id="2_dopym"]
+[ext_resource type="Material" uid="uid://d0wdyqnhd863d" path="res://2dconverter.tres" id="3_ootpb"]
+[ext_resource type="Script" uid="uid://bf1x5hfd0eq3x" path="res://2_dconverter.gd" id="3_v38iq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwv3a"]
 albedo_color = Color(0.411765, 0.290196, 0.239216, 1)
@@ -17,6 +19,529 @@ size = Vector3(50, 1, 50)
 background_mode = 1
 background_color = Color(0.180392, 0.243137, 0.235294, 1)
 ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v38iq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5jjoc"]
+resource_name = "0.615686_0.811765_0.929412_0.000000_0.000000"
+cull_mode = 2
+albedo_color = Color(0.806957, 0.912197, 0.968307, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_q7ida"]
+_surfaces = [{
+"aabb": AABB(1.82566e-07, -0.000237244, -4.46348e-06, 0.000157798, 0.00103608, 0.000518038),
+"format": 34896613377,
+"index_count": 3,
+"index_data": PackedByteArray("AAABAAIA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 3,
+"vertex_data": PackedByteArray("//8AAP//AAD/////AAAAAAAAJTobAQAA")
+}, {
+"aabb": AABB(0.000157981, -0.000237244, -0.00159766, 0.000623193, 0.00103608, 0.00211124),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAwAAAAQAAwAEAAUA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAD//y7BAABX91f0ZAkAAP////8AAAAAdiqeOpHRAAAAAAAA//8AAPVFFCrgwAAA")
+}, {
+"aabb": AABB(-6.76392e-18, -1.91946e-06, -0.0477639, 0.0233541, 0.028356, 0.05),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAQADAAQABAADAAUA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/////3ILAACQCDoHXuwAAP//n9cAAAAAAABkKP//AAC7AToHhvQAAAAAAACJ9AAA")
+}, {
+"aabb": AABB(-0.0233541, 0.023882, -0.0477639, 0.0467082, 0.00447214, 0.00223607),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAAAAAAAAAP////8AAP///////wAAAAAAAAAAAAA=")
+}, {
+"aabb": AABB(-0.0233541, -1.91946e-06, -0.0477639, 0.0233543, 0.028356, 0.05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAD//3ILAAD//wAAifQAAP7/ZCj//wAAAACf1wAAAAA=")
+}, {
+"aabb": AABB(-0.025, -1.91946e-06, -0.05, 0.05, 0.0250019, 0.0499978),
+"format": 34896613377,
+"index_count": 15,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAgADAAQAAQAAAAUABQAAAAYA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("AAD//wAAAACR94z0cgsAAP////8AAAAA/4MyCNP3AADjg7cHOfgAAG0IjPRyCwAA/38AAP//AAA=")
+}, {
+"aabb": AABB(-0.0305902, 0, -0.05, 0.0611803, 0.0305902, 0.0611803),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAQAAAAQAAAADAAUABQABAAQAAQAFAAMA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/////wAAAAD/f2wlktoAALfhSO22EgAARx5I7bYSAAD/fwAA//8AAAAA//8AAAAA")
+}, {
+"aabb": AABB(0.000261354, -7.38444e-19, -0.0477639, 0.0280927, 0.0233541, 0.05),
+"format": 34896613377,
+"index_count": 9,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAQAAAAQA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 5,
+"vertex_data": PackedByteArray("/////3ILAACLBD0Iw+wAAF4mAAD//wAAAAAAADf1AAA+1///AAAAAA==")
+}, {
+"aabb": AABB(0.023882, -0.0233541, -0.0477639, 0.00447214, 0.0467082, 0.00223607),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAAAAAAD///////8AAP//AAD//wAAAAD//wAAAAA=")
+}, {
+"aabb": AABB(0, -0.0305902, -0.05, 0.0305902, 0.0611803, 0.0611803),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMABAACAAEAAAAEAAMAAgAEAAUABAAAAAUA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("//8AAAAAAABI7bfhthIAAP////8AAAAASO1HHrYSAABsJf9/ktoAAAAA/3///wAA")
+}, {
+"aabb": AABB(-0.0305902, -0.0305902, -0.05, 0.0611803, 0.0611803, 1e-05),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAgAEAAAAAwAFAAEABAACAAYABQADAAcABgAHAAQABwAGAAUA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAAAAAACa6JroAAAAAJroZBcAAAAA/////wAAAAAAAAAAAAAAAGQXmugAAAAAZBdkFwAAAAAAAP//AAAAAA==")
+}, {
+"aabb": AABB(0.000760102, -0.025, -0.05, 0.0242399, 0.05, 0.0484798),
+"format": 34896613377,
+"index_count": 15,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAwABAAQAAQAAAAUABQAAAAYA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("/////wAAAAAw9G0IzgsAAP//AAAAAAAARY2eN7lyAADZdMtEJYsAADD0kffOCwAAAADYg///AAA=")
+}, {
+"aabb": AABB(0.000261354, -0.0233541, -0.0477639, 0.0280927, 0.0233541, 0.05),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAAACAAQABAACAAUABgADAAAAAwAGAAcA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("Xib/////AAD+CCz10uoAAF5pP4F3ewAA/ghK/YP0AAD//wAAcgsAAD7XAAAAAAAAAAD//zf1AACcAEP/g/QAAA==")
+}, {
+"aabb": AABB(-0.0281072, -0.000246916, -0.0472701, 0.0293557, 0.0233541, 0.05),
+"format": 34896613377,
+"index_count": 15,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAQADAAQABQAEAAMABAAFAAYA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("AAD//3ILAAAc9a8CAvIAAP8m//8AAAAAQ9AAAP//AAB89hsApvQAAP//AAD78QAA+Pf5AfvxAAA=")
+}, {
+"aabb": AABB(-0.0305902, -0.0305902, -0.05, 0.0305902, 0.0611803, 0.0611803),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAgAEAAAABAABAAMABAACAAUAAQAEAAUA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAD//wAAAACj3Pd+o9wAAMcUr+DHFAAA////f///AAAAAAAAAAAAAMcUPh3HFAAA")
+}, {
+"aabb": AABB(-0.025, -0.025, -0.05, 0.0250002, 0.05, 0.0499978),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAQAAAAQABAAAAAUA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAAAAAAAAAD6DU72+g0AAAAA//8AAAAA///8f///AAD6DSkH+g0AAL4d3w6+HQAA")
+}, {
+"aabb": AABB(-0.0281072, -0.023601, -0.0472701, 0.00447213, 0.0467082, 0.00223607),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAD/////AAD//wAAAAAAAAAAAAD//wAA/////wAAAAA=")
+}, {
+"aabb": AABB(-0.0281072, -0.023601, -0.0472701, 0.0293557, 0.0233541, 0.05),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAgABAAQAAgAFAAAABQACAAYABgACAAcA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAHILAABsNIEQxA8AAHz27P+w9AAA/yYAAAAAAADCV2g4CjUAAEPQ/////wAA//////vxAAD//+H3S+gAAA==")
+}, {
+"aabb": AABB(-0.025, -0.025, -0.05, 0.05, 0.010863, 0.0217261),
+"format": 34896613377,
+"index_count": 15,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAwABAAQAAQAAAAUABQAAAAYA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("//8AAAAAAAA8CREeER4AAAAAAAAAAAAA3w5zRHNEAACdIzyaPJoAAGD4ER4RHgAAYMj/////AAA=")
+}, {
+"aabb": AABB(0.000157981, -0.0281961, -0.047448, 0.0233541, 0.0279427, 0.05),
+"format": 34896613377,
+"index_count": 15,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAAADAAQAAQAAAAUAAQAFAAYA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("AADL2v//AAA7mc2AK2IAAOF/YpjZeQAA9AtG+TTpAAAAAP//mfUAAP//AAByCwAA///4KAAAAAA=")
+}, {
+"aabb": AABB(-0.0305902, -0.0305902, -0.05, 0.0611803, 0.0305902, 0.0611803),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAQAAAAQABAADAAEAAAADAAUAAwAEAAUA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("//8AAAAAAADwHggUCBQAAGHiCBQIFAAAqIDk2+TbAAAAAAAAAAAAAP9//////wAA")
+}, {
+"aabb": AABB(-0.0231961, -0.0281961, -0.047448, 0.0233541, 0.0279427, 0.05),
+"format": 34896613377,
+"index_count": 9,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAQAAAAQA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 5,
+"vertex_data": PackedByteArray("///L2v//AAB6OD5Z8zUAAAAAAAByCwAAAAD4KAAAAAD/////mfUAAA==")
+}, {
+"aabb": AABB(-0.0231961, -0.0281961, -0.047448, 0.0467082, 0.00447213, 0.00223607),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMA"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("/////wAAAAAAAAAA//8AAAAA//8AAAAA//8AAP//AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_v8kj3"]
+resource_name = "Root_mesh0_mesh"
+_surfaces = [{
+"aabb": AABB(1.82566e-07, -0.000237244, -4.46348e-06, 0.000157798, 0.00103608, 0.000518038),
+"attribute_data": PackedByteArray("AAAAAKHl/////w86"),
+"format": 34896613399,
+"index_count": 3,
+"index_data": PackedByteArray("AAABAAIA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 3,
+"vertex_data": PackedByteArray("//8AAP//lTD/////AACVMAAAJTobAZUwJXnjECV54xAleeMQ")
+}, {
+"aabb": AABB(0.000157981, -0.000237244, -0.00159766, 0.000623193, 0.00103608, 0.00211124),
+"attribute_data": PackedByteArray("Tzj//672V/T/////BC6eOgAAAADTPxQq"),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAwAAAAQAAwAEAAUA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAD//y7B7/lX91f0ZAnv+f////8AAO/5diqeOpHR7/kAAAAA///v+fVFFCrgwO/5nTZ5e502eXudNnl7nTZ5e502eXudNnl7")
+}, {
+"aabb": AABB(-6.76392e-18, -1.91946e-06, -0.0477639, 0.0233541, 0.028356, 0.05),
+"attribute_data": PackedByteArray("rgn//xPuOgcAAJ/X//9kKAf2OgdO9gAA"),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAQADAAQABAADAAUA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/////3ILlTCQCDoHXuyVMP//n9cAAJUwAABkKP//lTC7AToHhvSVMAAAAACJ9JUw2YYb79mGG+/Zhhvv2YYb79mGG+/Zhhvv")
+}, {
+"aabb": AABB(-0.0233541, 0.023882, -0.0477639, 0.0467082, 0.00447214, 0.00223607),
+"attribute_data": PackedByteArray("AAD/////AAD/////AAAAAA=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAAAAJsIAAP////8mwv///////ybCAAAAAAAAJsKGFHjrhhR464YUeOuGFHjr")
+}, {
+"aabb": AABB(-0.0233541, -1.91946e-06, -0.0477639, 0.0233543, 0.028356, 0.05),
+"attribute_data": PackedByteArray("rgn//072AAD//2QoAACf1w=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAD//3IL7/n//wAAifTv+f7/ZCj//+/5AACf1wAA7/lhyYWEYcmFhGHJhYRhyYWE")
+}, {
+"aabb": AABB(-0.025, -1.91946e-06, -0.05, 0.05, 0.0250019, 0.0499978),
+"attribute_data": PackedByteArray("AAAAAHILkfcAAP//0vf/gzz444NyC20I////fw=="),
+"format": 34896613399,
+"index_count": 15,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAgADAAQAAQAAAAUABQAAAAYA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("AAD//wAA9eCR94z0cgv14P////8AAPXg/4MyCNP39eDjg7cHOfj14G0IjPRyC/Xg/38AAP//9eDkMBrP5DAaz+QwGs/kMBrP5DAaz+QwGs/kMBrP")
+}, {
+"aabb": AABB(-0.0305902, 0, -0.05, 0.0611803, 0.0305902, 0.0611803),
+"attribute_data": PackedByteArray("AAD//5La/3+2ErfhthJHHv///38AAAAA"),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAQAAAAQAAAADAAUABQABAAQAAQAFAAMA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/////wAAljT/f2wlktqWNLfhSO22EpY0Rx5I7bYSljT/fwAA//+WNAAA//8AAJY0YKNgo2CjYKNgo2CjYKNgo2CjYKNgo2Cj")
+}, {
+"aabb": AABB(0.000261354, -7.38444e-19, -0.0477639, 0.0280927, 0.0233541, 0.05),
+"attribute_data": PackedByteArray("rgn//3bujgT//14m4fYAAAAAPtc="),
+"format": 34896613399,
+"index_count": 9,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAQAAAAQA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 5,
+"vertex_data": PackedByteArray("/////3ILVuOLBD0Iw+xW414mAAD//1bjAAAAADf1VuM+1///AABW41Ar/c5QK/3OUCv9zlAr/c5QK/3O")
+}, {
+"aabb": AABB(0.023882, -0.0233541, -0.0477639, 0.00447214, 0.0467082, 0.00223607),
+"attribute_data": PackedByteArray("//8AAAAA//8AAAAA/////w=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAAAA////////////////AAD/////AAD//wAA//+NZ/9/jWf/f41n/3+NZ/9/")
+}, {
+"aabb": AABB(0, -0.0305902, -0.05, 0.0305902, 0.0611803, 0.0611803),
+"attribute_data": PackedByteArray("//8AAEjtt+H/////SO1HHmwl/38AAP9/"),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMABAACAAEAAAAEAAMAAgAEAAUABAAAAAUA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("//8AAAAA41JI7bfhthLjUv////8AAONSSO1HHrYS41JsJf9/ktrjUgAA/3///+NS/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA")
+}, {
+"aabb": AABB(-0.0305902, -0.0305902, -0.05, 0.0611803, 0.0611803, 1e-05),
+"attribute_data": PackedByteArray("/////5roZBea6Jro//8AAAAA//9kF2QXZBea6AAAAAA="),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAgAEAAAAAwAFAAEABAACAAYABQADAAcABgAHAAQABwAGAAUA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAAAAAACa6JroAAAAAJroZBcAAAAA/////wAAAAAAAAAAAAAAAGQXmugAAAAAZBdkFwAAAAAAAP//AAAAAP7//3////9//v//f////3/+//9/////f////3////9/")
+}, {
+"aabb": AABB(0.000760102, -0.025, -0.05, 0.0242399, 0.05, 0.0484798),
+"attribute_data": PackedByteArray("/////zD0bQj//wAARY2eN9l0y0Qw9JH3AADYgw=="),
+"format": 34896613399,
+"index_count": 15,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAwABAAQAAQAAAAUABQAAAAYA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("/////wAA//8w9G0Izgv/////AAAAAP//RY2eN7ly///ZdMtEJYv//zD0kffOC///AADYg////////+Ow/v/jsP7/47D//xtP//8bT///47D+/+Ow")
+}, {
+"aabb": AABB(0.000261354, -0.0233541, -0.0477639, 0.0280927, 0.0233541, 0.05),
+"attribute_data": PackedByteArray("//9eJmvs/ghcfF5p3vX+CK4J//8AAD7X4fYAACz2nAA="),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAAACAAQABAACAAUABgADAAAAAwAGAAcA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("Xib/////qBz+CCz10uqoHF5pP4F3e6gc/ghK/YP0qBz//wAAcguoHD7XAAAAAKgcAAD//zf1qBycAEP/g/SoHACxT6sAsU+rALFPqwCxT6sAsU+rALFPqwCxT6sAsU+r")
+}, {
+"aabb": AABB(-0.0281072, -0.000246916, -0.0472701, 0.0293557, 0.0233541, 0.05),
+"attribute_data": PackedByteArray("UPYAAD4MG/X///8mAABD0JwJfPbZC///Jwz49w=="),
+"format": 34896613399,
+"index_count": 15,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAQADAAQABQAEAAMABAAFAAYA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("AAD//3ILqBwc9a8CAvKoHP8m//8AAKgcQ9AAAP//qBx89hsApvSoHP//AAD78agc+Pf5AfvxqBz+Tq9U/k6vVP5Or1T+Tq9U/k6vVP5Or1T+Tq9U")
+}, {
+"aabb": AABB(-0.0305902, -0.0305902, -0.05, 0.0305902, 0.0611803, 0.0611803),
+"attribute_data": PackedByteArray("/////1sj934366/gAAD/f///AAA36z4d"),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAgAEAAAABAABAAMABAACAAUAAQAEAAUA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAD//wAA//+j3Pd+o9z//8cUr+DHFP//////f/////8AAAAAAAD//8cUPh3HFP//G0//fxtP/38bT/9/G0//fxtP/38bT/9/")
+}, {
+"aabb": AABB(-0.025, -0.025, -0.05, 0.0250002, 0.05, 0.0499978),
+"attribute_data": PackedByteArray("//8AAATyTvb/////AAD8fwTyKQdA4t8O"),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAQAAAAQABAAAAAUA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAAAAAAAGy36DU72+g0bLQAA//8AABst///8f///Gy36DSkH+g0bLb4d3w6+HRst/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA")
+}, {
+"aabb": AABB(-0.0281072, -0.023601, -0.0472701, 0.00447213, 0.0467082, 0.00223607),
+"attribute_data": PackedByteArray("/////wAAAAD//wAAAAD//w=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAD//////////wAAAAD//wAAAAD//////////wAA//9xmP9/cZj/f3GY/39xmP9/")
+}, {
+"aabb": AABB(-0.0281072, -0.023601, -0.0472701, 0.0293557, 0.0233541, 0.05),
+"attribute_data": PackedByteArray("UPYAAB3wbDSSCXz2////Jm/KwlcAAEPQ2Qv//0sV//8="),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAgABAAQAAgAFAAAABQACAAYABgACAAcA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAHILVuNsNIEQxA9W43z27P+w9Fbj/yYAAAAAVuPCV2g4CjVW40PQ/////1bj//////vxVuP//+H3S+hW467UATGu1AExrtQBMa7UATGu1AExrtQBMa7UATGu1AEx")
+}, {
+"aabb": AABB(-0.025, -0.025, -0.05, 0.05, 0.010863, 0.0217261),
+"attribute_data": PackedByteArray("AAD//xEePAkAAAAAc0TfDjyanSMRHmD4//9gyA=="),
+"format": 34896613399,
+"index_count": 15,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAwABAAQAAQAAAAUABQAAAAYA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("//8AAAAACR88CREeER4JHwAAAAAAAAkf3w5zRHNECR+dIzyaPJoJH2D4ER4RHgkfYMj/////CR/jsOOw47DjsOOw47DjsOOw47DjsOOw47DjsOOw")
+}, {
+"aabb": AABB(0.000157981, -0.0281961, -0.047448, 0.0233541, 0.0279427, 0.05),
+"attribute_data": PackedByteArray("AADL2h2dzYAthWKYHhVG+coI//9Q9gAA///4KA=="),
+"format": 34896613399,
+"index_count": 15,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAAADAAQAAQAAAAUAAQAFAAYA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("AADL2v//7/k7mc2AK2Lv+eF/YpjZee/59AtG+TTp7/kAAP//mfXv+f//AAByC+/5///4KAAA7/mdNnl7nTZ5e502eXudNnl7nTZ5e502eXudNnl7")
+}, {
+"aabb": AABB(-0.0305902, -0.0305902, -0.05, 0.0611803, 0.0305902, 0.0611803),
+"attribute_data": PackedByteArray("AAD//wgU8B4IFGHi5NuogAAAAAD///9/"),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAQAAAAQABAADAAEAAAADAAUAAwAEAAUA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("//8AAAAAaMvwHggUCBRoy2HiCBQIFGjLqIDk2+TbaMsAAAAAAABoy/9//////2jLYCOe3GAjntxgI57cYCOe3GAjntxgI57c")
+}, {
+"aabb": AABB(-0.0231961, -0.0281961, -0.047448, 0.0233541, 0.0279427, 0.05),
+"attribute_data": PackedByteArray("AADL2qfJPllQ9gAA///4KMoI//8="),
+"format": 34896613399,
+"index_count": 9,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAQAAAAQA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 5,
+"vertex_data": PackedByteArray("///L2v//lTB6OD5Z8zWVMAAAAAByC5UwAAD4KAAAlTD/////mfWVMCV54xAleeMQJXnjECV54xAleeMQ")
+}, {
+"aabb": AABB(-0.0231961, -0.0281961, -0.047448, 0.0467082, 0.00447213, 0.00223607),
+"attribute_data": PackedByteArray("/////wAAAAD//wAAAAD//w=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMA"),
+"material": SubResource("StandardMaterial3D_5jjoc"),
+"name": "0.615686_0.811765_0.929412_0.000000_0.000000",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("/////wAAJsIAAAAA//8mwgAA//8AACbC//8AAP//JsJ464YUeOuGFHjrhhR464YU")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_q7ida")
 
 [node name="Node3D" type="Node3D"]
 
@@ -87,9 +612,38 @@ transform = Transform3D(2, 0, 0, 0, 4, 0, 0, 0, 2, 0.124664, 2.5, -2.13989)
 [node name="block15" parent="." instance=ExtResource("2_dopym")]
 transform = Transform3D(2, 0, 0, 0, 5, 0, 0, 0, 2, -4.28357, 3, -6.15321)
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.20873, 8.14786, -10.2428)
+[node name="2dconverter" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.976, 7.6, -10.226)
+script = ExtResource("3_v38iq")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="2dconverter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.323099, 0)
+shape = SubResource("BoxShape3D_v38iq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="Part 1" type="MeshInstance3D" parent="2dconverter"]
+transform = Transform3D(15, 0, 0, 0, -6.55671e-07, 15, 0, -15, -6.55671e-07, 0, 0, 0)
+mesh = SubResource("ArrayMesh_v8kj3")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_ootpb")
+surface_material_override/1 = ExtResource("3_ootpb")
+surface_material_override/2 = ExtResource("3_ootpb")
+surface_material_override/3 = ExtResource("3_ootpb")
+surface_material_override/4 = ExtResource("3_ootpb")
+surface_material_override/5 = ExtResource("3_ootpb")
+surface_material_override/6 = ExtResource("3_ootpb")
+surface_material_override/7 = ExtResource("3_ootpb")
+surface_material_override/8 = ExtResource("3_ootpb")
+surface_material_override/9 = ExtResource("3_ootpb")
+surface_material_override/10 = ExtResource("3_ootpb")
+surface_material_override/11 = ExtResource("3_ootpb")
+surface_material_override/12 = ExtResource("3_ootpb")
+surface_material_override/13 = ExtResource("3_ootpb")
+surface_material_override/14 = ExtResource("3_ootpb")
+surface_material_override/15 = ExtResource("3_ootpb")
+surface_material_override/16 = ExtResource("3_ootpb")
+surface_material_override/17 = ExtResource("3_ootpb")
+surface_material_override/18 = ExtResource("3_ootpb")
+surface_material_override/19 = ExtResource("3_ootpb")
+surface_material_override/20 = ExtResource("3_ootpb")
+surface_material_override/21 = ExtResource("3_ootpb")
+surface_material_override/22 = ExtResource("3_ootpb")
