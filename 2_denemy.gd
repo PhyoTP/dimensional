@@ -18,6 +18,7 @@ func _on_body_entered(body: Node3D):
 			direction.x = -direction.x
 		else:
 			direction.z = -direction.z
+		$MeshInstance3D.mesh.material.albedo_color = Color(0.07, 0.57, 0.90)
 	if body.is_in_group("player"):
 		print("dead")
 		get_tree().change_scene_to_packed(death)
@@ -30,3 +31,4 @@ func player_on_ground():
 	var dist = sqrt(diff.x**2 + diff.z**2)
 	var ratio = 0.1/dist
 	direction = Vector3(diff.x*ratio, 0, diff.z*ratio)
+	$MeshInstance3D.mesh.material.albedo_color = Color(0.9,0.07,0.07)

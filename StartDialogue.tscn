@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://brjokohqso3is"]
+[gd_scene load_steps=4 format=3 uid="uid://brjokohqso3is"]
 
 [ext_resource type="Theme" uid="uid://b7y18yllnp2n1" path="res://maintheme.tres" id="1_mufgd"]
 [ext_resource type="Texture2D" uid="uid://ohnjquui8por" path="res://Dialogue.png" id="2_3msof"]
+[ext_resource type="Script" uid="uid://ff6ie0kt747e" path="res://startdialogue.gd" id="2_v8nph"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -17,12 +18,17 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -20.5
-offset_right = 201.0
-offset_bottom = 20.5
+offset_top = -324.0
+offset_right = 1152.0
+offset_bottom = -108.0
 grow_vertical = 2
-text = "Text here"
+text = "Welcome agent, to the Dimension Variance Authority."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("2_v8nph")
 
 [node name="Dialogue" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(576, 324)
 texture = ExtResource("2_3msof")
