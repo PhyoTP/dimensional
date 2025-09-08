@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://b7y18yllnp2n1" path="res://maintheme.tres" id="1_ufv5y"]
 [ext_resource type="Script" uid="uid://cdc4io4mkv34e" path="res://start_menu.gd" id="2_ufv5y"]
-[ext_resource type="Texture2D" uid="uid://d0qe1kw1iswm0" path="res://Start(1).png" id="3_0d5ky"]
+[ext_resource type="Texture2D" uid="uid://cwf7urdt1dxqf" path="res://Start(4).png" id="3_0d5ky"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -39,7 +39,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Settings"
 
-[node name="Start(1)" type="Sprite2D" parent="."]
+[node name="StartBackground" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(576, 324)
 texture = ExtResource("3_0d5ky")
