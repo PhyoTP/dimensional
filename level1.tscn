@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b78x13714oket"]
+[gd_scene load_steps=16 format=3 uid="uid://b78x13714oket"]
 
 [ext_resource type="PackedScene" uid="uid://ywoaa20y4cqj" path="res://character_body_3d.tscn" id="1_jwv3a"]
 [ext_resource type="PackedScene" uid="uid://ymr7e85bwtco" path="res://3dblock.tscn" id="2_dopym"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cfuvp0jbo643k" path="res://track.png" id="5_crycw"]
 [ext_resource type="Script" uid="uid://bgekkkv30gq0m" path="res://2_denemy.gd" id="5_v8kj3"]
 [ext_resource type="PackedScene" uid="uid://gldptvit1t1c" path="res://3dborder.tscn" id="6_crycw"]
+[ext_resource type="AudioStream" uid="uid://buvk1dyjq10k" path="res://found.wav" id="6_xy4tn"]
+[ext_resource type="AudioStream" uid="uid://cykbumfll4plp" path="res://bounce.mp3" id="7_usj0q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwv3a"]
 albedo_color = Color(0.411765, 0.290196, 0.239216, 1)
@@ -116,6 +118,12 @@ mesh = SubResource("CylinderMesh_v8kj3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="2denemy"]
 shape = SubResource("BoxShape3D_crycw")
+
+[node name="FoundPlayer" type="AudioStreamPlayer3D" parent="2denemy"]
+stream = ExtResource("6_xy4tn")
+
+[node name="BouncePlayer" type="AudioStreamPlayer3D" parent="2denemy"]
+stream = ExtResource("7_usj0q")
 
 [node name="block16" parent="." instance=ExtResource("6_crycw")]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -30, 0, 0)

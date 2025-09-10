@@ -21,6 +21,7 @@ func _on_body_entered(body: Node3D):
 		else:
 			direction.z = -direction.z
 		$MeshInstance3D.mesh.material.albedo_texture = track
+		$BouncePlayer.play()
 	if body.is_in_group("player"):
 		print("dead")
 		get_tree().change_scene_to_packed(death)
@@ -34,3 +35,5 @@ func player_on_ground():
 	var ratio = 0.1/dist
 	direction = Vector3(diff.x*ratio, 0, diff.z*ratio)
 	$MeshInstance3D.mesh.material.albedo_texture = found
+	if not $FoundPlayer.playing:
+		$FoundPlayer.play()
