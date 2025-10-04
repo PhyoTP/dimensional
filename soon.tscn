@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://xo0womcvelbd"]
+[gd_scene load_steps=2 format=3 uid="uid://cl6w2d2u87rh3"]
 
-[ext_resource type="Theme" uid="uid://b7y18yllnp2n1" path="res://maintheme.tres" id="1_p4ba2"]
+[ext_resource type="Theme" uid="uid://b7y18yllnp2n1" path="res://maintheme.tres" id="1_hhc24"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -13,10 +13,10 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_right = 1152.0
-offset_bottom = 648.0
-theme = ExtResource("1_p4ba2")
+offset_bottom = 324.0
+theme = ExtResource("1_hhc24")
 theme_override_colors/font_color = Color(0.909804, 0.317647, 0.0705882, 1)
 theme_override_font_sizes/font_size = 128
-text = "You win!"
+text = "Coming soon"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -18,7 +18,7 @@ var jap_dialogue = [
 	"最初の任務は、「ヴァオンサー」を捕まえることです。",
 	"ヴァオンサーは二次元の化け物です、動きを頼って敵を消します。",
 	"普通の武器はヴァオンサーに通用しませんが、遭遇すれば致命的です。",
-	"これから、「二次元エンティティクラマー」を使って捕まえなくてはいけません。",
+	"これから、「二次元化け物クラマー」を使って捕まえなくてはいけません。",
 	"「クラマー」を設置し、誘い込みます。",
 	"健闘を祈ります。"
 ]
@@ -38,6 +38,6 @@ func _input(event: InputEvent) -> void:
 			get_tree().change_scene_to_packed(level1)
 		else:
 			text = ""
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if text != dialogue[index]:
 		text+=dialogue[index][len(text)]

@@ -1,13 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://b78x13714oket"]
+[gd_scene load_steps=12 format=3 uid="uid://b78x13714oket"]
 
 [ext_resource type="PackedScene" uid="uid://ywoaa20y4cqj" path="res://character_body_3d.tscn" id="1_jwv3a"]
 [ext_resource type="PackedScene" uid="uid://ymr7e85bwtco" path="res://3dblock.tscn" id="2_dopym"]
 [ext_resource type="PackedScene" uid="uid://cfy8svc6lc2gv" path="res://2_dconverterreal.tscn" id="3_v8kj3"]
-[ext_resource type="Texture2D" uid="uid://cfuvp0jbo643k" path="res://track.png" id="5_crycw"]
-[ext_resource type="Script" uid="uid://bgekkkv30gq0m" path="res://2_denemy.gd" id="5_v8kj3"]
+[ext_resource type="PackedScene" uid="uid://04mqe5fkp75h" path="res://2_denemy.tscn" id="4_i2041"]
 [ext_resource type="PackedScene" uid="uid://gldptvit1t1c" path="res://3dborder.tscn" id="6_crycw"]
-[ext_resource type="AudioStream" uid="uid://buvk1dyjq10k" path="res://found.wav" id="6_xy4tn"]
-[ext_resource type="AudioStream" uid="uid://cykbumfll4plp" path="res://bounce.mp3" id="7_usj0q"]
+[ext_resource type="Theme" uid="uid://b7y18yllnp2n1" path="res://maintheme.tres" id="9_usj0q"]
+[ext_resource type="Script" uid="uid://drxxtsi20oyio" path="res://hint_label.gd" id="10_5j5gb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwv3a"]
 albedo_color = Color(0.411765, 0.290196, 0.239216, 1)
@@ -23,19 +22,6 @@ size = Vector3(50, 1, 50)
 background_mode = 1
 background_color = Color(0.180392, 0.243137, 0.235294, 1)
 ambient_light_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v38iq"]
-albedo_texture = ExtResource("5_crycw")
-metallic = 1.0
-roughness = 0.5
-uv1_scale = Vector3(2, 2, 2)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_v8kj3"]
-material = SubResource("StandardMaterial3D_v38iq")
-height = 0.001
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_crycw"]
-size = Vector3(1, 0.5, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -109,21 +95,8 @@ transform = Transform3D(2, 0, 0, 0, 5, 0, 0, 0, 2, -4.28357, 3, -6.15321)
 [node name="2dconverter" parent="." groups=["converter"] instance=ExtResource("3_v8kj3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.976, 7.6, -10.226)
 
-[node name="2denemy" type="Area3D" parent="." groups=["enemy"]]
+[node name="2denemy" parent="." instance=ExtResource("4_i2041")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.462, 0.5, -10.112)
-script = ExtResource("5_v8kj3")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="2denemy"]
-mesh = SubResource("CylinderMesh_v8kj3")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="2denemy"]
-shape = SubResource("BoxShape3D_crycw")
-
-[node name="FoundPlayer" type="AudioStreamPlayer3D" parent="2denemy"]
-stream = ExtResource("6_xy4tn")
-
-[node name="BouncePlayer" type="AudioStreamPlayer3D" parent="2denemy"]
-stream = ExtResource("7_usj0q")
 
 [node name="block16" parent="." instance=ExtResource("6_crycw")]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -30, 0, 0)
@@ -136,3 +109,13 @@ transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 30)
 
 [node name="block19" parent="." instance=ExtResource("6_crycw")]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, -30)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HintLabel" type="Label" parent="CanvasLayer" groups=["converter", "player"]]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("9_usj0q")
+text = "
+"
+script = ExtResource("10_5j5gb")

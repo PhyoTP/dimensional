@@ -6,11 +6,13 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var two_converter = preload("res://2dconverter.tscn")
 var converter = null
 var material = preload("res://2dconverter.tres")
+var can_move = true
 func _physics_process(delta):
 	# Apply gravity
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
+	if not can_move:
+		return
 	# Jump
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -38,7 +40,7 @@ var is_controlled = true
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)  # locks the mouse
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if abs(position.y-1.5) <= 0.1:
 		get_tree().call_group("enemy", "player_on_ground")
 	if converter:
@@ -76,7 +78,7 @@ func _input(event):
 			get_tree().call_group("converter", "is_placed", converter.global_position)
 			material.albedo_color.a = 1.0
 			converter.queue_free()
-		else:
+		elif can_move:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			is_controlled = true
 	
@@ -87,7 +89,10 @@ func get_two_converter():
 	converter = two_converter.instantiate()
 	material.albedo_color.a = 0.5
 	add_child(converter)
-
+func entity_captured():
+	can_move = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	is_controlled = false
 
 
 	

@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvtbxyssb0vye"]
+
+[ext_resource type="Script" uid="uid://mpgyrac1wc3t" path="res://dialogue2.gd" id="1_3vr5m"]
+[ext_resource type="Texture2D" uid="uid://ohnjquui8por" path="res://Dialogue.png" id="2_5uajk"]
+[ext_resource type="Theme" uid="uid://b7y18yllnp2n1" path="res://maintheme.tres" id="3_nghrb"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -324.0
+offset_right = 1152.0
+offset_bottom = -108.0
+grow_vertical = 2
+theme = ExtResource("3_nghrb")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("1_3vr5m")
+
+[node name="Dialogue" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(576, 324)
+texture = ExtResource("2_5uajk")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -294.0
+offset_top = -44.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_nghrb")
+text = "Click to continue"
+horizontal_alignment = 2

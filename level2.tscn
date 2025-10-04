@@ -1,5 +1,42 @@
-[gd_scene format=3 uid="uid://2imelvicpo2j"]
+[gd_scene load_steps=7 format=3 uid="uid://2imelvicpo2j"]
+
+[ext_resource type="Script" uid="uid://b0uhyin5qkbii" path="res://level_2.gd" id="1_r40rm"]
+[ext_resource type="Texture2D" uid="uid://bv481811gwni8" path="res://square2d.png" id="2_6q4t8"]
+[ext_resource type="Script" uid="uid://inr7thcm7nea" path="res://character_2d.gd" id="3_6q4t8"]
+[ext_resource type="Texture2D" uid="uid://cfuvp0jbo643k" path="res://track.png" id="4_8tcn8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r40rm"]
+size = Vector2(72, 72)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r6vdu"]
+radius = 36.0
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_r40rm")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Wall2D" type="StaticBody2D" parent="."]
+position = Vector2(36, 36)
+
+[node name="Square2d" type="Sprite2D" parent="Wall2D" groups=["wall"]]
+texture = ExtResource("2_6q4t8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2D"]
+shape = SubResource("RectangleShape2D_r40rm")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(576, 324)
+script = ExtResource("3_6q4t8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_r6vdu")
+
+[node name="Found" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("4_8tcn8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.411765, 0.290196, 0.239216, 1)

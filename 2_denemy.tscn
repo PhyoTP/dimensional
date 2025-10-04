@@ -1,0 +1,124 @@
+[gd_scene load_steps=11 format=3 uid="uid://04mqe5fkp75h"]
+
+[ext_resource type="Script" uid="uid://bgekkkv30gq0m" path="res://2_denemy.gd" id="1_o7yhd"]
+[ext_resource type="Texture2D" uid="uid://cfuvp0jbo643k" path="res://track.png" id="2_np5ti"]
+[ext_resource type="AudioStream" uid="uid://buvk1dyjq10k" path="res://found.wav" id="3_qhqdv"]
+[ext_resource type="AudioStream" uid="uid://cykbumfll4plp" path="res://bounce.mp3" id="4_ouy2i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v38iq"]
+albedo_texture = ExtResource("2_np5ti")
+metallic = 1.0
+roughness = 0.5
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_v8kj3"]
+material = SubResource("StandardMaterial3D_v38iq")
+height = 0.001
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_crycw"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="Animation" id="Animation_mx85b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:top_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:mesh:bottom_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5j5gb"]
+resource_name = "caught"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:top_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.01]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:mesh:bottom_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.01]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hx44q"]
+_data = {
+&"RESET": SubResource("Animation_mx85b"),
+&"caught": SubResource("Animation_5j5gb")
+}
+
+[node name="2denemy" type="Area3D" groups=["enemy"]]
+script = ExtResource("1_o7yhd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_v8kj3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_crycw")
+
+[node name="FoundPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_qhqdv")
+
+[node name="BouncePlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_ouy2i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hx44q")
+}

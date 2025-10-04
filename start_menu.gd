@@ -26,20 +26,22 @@ func language_pressed():
 	Global.japanese = not Global.japanese
 	get_tree().reload_current_scene()
 func set_focused_button(button: Button):
-	var style_normal = StyleBoxFlat.new()
-	style_normal.bg_color = Color8(232,81,18)
-	if selected_button:
-		selected_button.remove_theme_stylebox_override("normal")
-		selected_button.text = selected_button.text.erase(selected_button.text.length()-1)
-	selected_button = button
-	selected_button.add_theme_stylebox_override("normal",style_normal)
-	selected_button.text += ">"
-func _process(delta: float) -> void:
-	if Input.is_action_pressed("ui_down"):
-		set_focused_button(language_button)
-	elif Input.is_action_pressed("ui_up"):
-		set_focused_button(play_button)
-	elif Input.is_action_pressed("ui_accept") or Input.is_action_pressed("ui_right"):
-		selected_button == play_button if play_pressed() else language_pressed()
+	if selected_button != button:
+		var style_normal = StyleBoxFlat.new()
+		style_normal.bg_color = Color8(232,81,18)
+		if selected_button:
+			selected_button.remove_theme_stylebox_override("normal")
+			selected_button.text = selected_button.text.erase(selected_button.text.length()-1)
+		selected_button = button
+		selected_button.add_theme_stylebox_override("normal",style_normal)
+		selected_button.text += ">"
+func _process(_delta: float) -> void:
+	if not $AnimationPlayer.is_playing():
+		if Input.is_action_pressed("ui_down"):
+			set_focused_button(language_button)
+		elif Input.is_action_pressed("ui_up"):
+			set_focused_button(play_button)
+		elif Input.is_action_pressed("ui_accept") or Input.is_action_pressed("ui_right"):
+			play_pressed() if selected_button == play_button else language_pressed()
 		
 	
