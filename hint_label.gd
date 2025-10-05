@@ -13,7 +13,7 @@ func get_two_converter():
 		text = "Click to place"
 func is_placed(_coords: Vector3):
 	if Global.japanese:
-		text = "誘い込む"
+		text = "バウンサーを誘い込む"
 	else:
 		text = "Lure Bouncer"
 func entity_captured():
