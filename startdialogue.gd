@@ -32,7 +32,9 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		index+=1
-		if index >= 4:
+		if index == 3:
+			get_node("../TextureRect").texture = get_node("../SubViewport").get_texture()
+		if index == 4:
 			get_node("../Dialogue").texture = details
 		if len(dialogue) <= index:
 			get_tree().change_scene_to_packed(level1)

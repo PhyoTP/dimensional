@@ -32,7 +32,9 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		index+=1
-		if index >= 5:
+		if index == 1:
+			get_node("../Tamagotchib").visible = true
+		if index == 5:
 			get_node("../Dialogue").texture = details
 		if len(dialogue) <= index:
 			get_tree().change_scene_to_packed(level2)

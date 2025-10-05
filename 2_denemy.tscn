@@ -5,14 +5,14 @@
 [ext_resource type="AudioStream" uid="uid://buvk1dyjq10k" path="res://found.wav" id="3_qhqdv"]
 [ext_resource type="AudioStream" uid="uid://cykbumfll4plp" path="res://bounce.mp3" id="4_ouy2i"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v38iq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7yhd"]
 albedo_texture = ExtResource("2_np5ti")
 metallic = 1.0
 roughness = 0.5
 uv1_scale = Vector3(2, 2, 2)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_v8kj3"]
-material = SubResource("StandardMaterial3D_v38iq")
+material = SubResource("StandardMaterial3D_o7yhd")
 height = 0.001
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_crycw"]
