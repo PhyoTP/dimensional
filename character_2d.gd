@@ -2,7 +2,11 @@ extends CharacterBody2D
 
 @export var speed: float = 200.0
 var direction = Vector2.RIGHT.rotated(randf()*TAU)
-
+@onready var laser = preload("res://tamagotchil.png")
+@onready var captured = preload("res://tamagotchic.png")
+@onready var normal = preload("res://tamagotchi.png")
+@onready var beam = preload("res://beam.tscn")
+var can_shoot = false
 func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("ui_right"):
@@ -29,3 +33,15 @@ func _physics_process(delta: float) -> void:
 	$Track.rotation = atan2(direction.y, direction.x)
 	velocity = direction * speed
 	move_and_slide()
+func _input(event: InputEvent) -> void:
+	if can_shoot and event is InputEventKey and event.keycode == Key.KEY_F and event.pressed:
+		var newBeam = beam.instantiate()
+		newBeam.direction = direction
+		newBeam.position = position
+		add_sibling(newBeam)
+func _can_shoot():
+	$Tamagotchi.texture = laser
+	can_shoot = true
+func _cant_shoot():
+	$Tamagotchi.texture = normal
+	can_shoot = false

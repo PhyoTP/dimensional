@@ -35,6 +35,8 @@ func _on_timer_timeout() -> void:
 		$CharacterBody2D/ScoreLabel.text = str(length)
 		$CharacterBody2D/LengthBar.texture = load("res://bars/bar "+str(length)+".png")
 	snake_coords = snake_coords.slice(0,length)
+	if length > 1:
+		get_tree().call_group("player", "_cant_shoot")
 	for i in range(length):
 		if i >= len(snake_list):
 			var newBody = snake_body.instantiate()
@@ -55,6 +57,7 @@ func _on_block_body_entered(body: Node2D) -> void:
 			body.direction.x = -body.direction.x
 		if abs(diff.x) <= abs(diff.y):
 			body.direction.y = -body.direction.y
+	body.get_node("./BouncePlayer").play()
 		
 
 
@@ -69,6 +72,9 @@ func _on_snake_body_entered(body: Node2D, sender: Node2D) -> void:
 		for i in snake_list.slice(index):
 			i.queue_free()
 		snake_list = snake_list.slice(0, index)
-		length = index
-		$CharacterBody2D/ScoreLabel.text = str(length)
-		$CharacterBody2D/LengthBar.texture = load("res://bars/bar "+str(length)+".png")
+		if index != -1:
+			length = index
+			$CharacterBody2D/ScoreLabel.text = str(length)
+			$CharacterBody2D/LengthBar.texture = load("res://bars/bar "+str(length)+".png")
+			if length == 1:
+				get_tree().call_group("player", "_can_shoot")
