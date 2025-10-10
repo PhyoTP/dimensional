@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://2imelvicpo2j"]
+[gd_scene load_steps=16 format=3 uid="uid://2imelvicpo2j"]
 
 [ext_resource type="Script" uid="uid://d4brpplkmcxbm" path="res://level_2.gd" id="1_r40rm"]
 [ext_resource type="Script" uid="uid://inr7thcm7nea" path="res://character_2d.gd" id="3_6q4t8"]
@@ -8,11 +8,96 @@
 [ext_resource type="Texture2D" uid="uid://bv481811gwni8" path="res://square2d.png" id="5_r6vdu"]
 [ext_resource type="PackedScene" uid="uid://dc67wdhggb0en" path="res://snake_body.tscn" id="6_8i3m3"]
 [ext_resource type="Theme" uid="uid://b7y18yllnp2n1" path="res://maintheme.tres" id="6_rmy57"]
-[ext_resource type="Texture2D" uid="uid://b7dbj3jet5hqq" path="res://tamagotchi.png" id="7_qulpo"]
+[ext_resource type="Texture2D" uid="uid://bf4t3rwnivlsw" path="res://tamagotchi/normal.png" id="7_jifot"]
+[ext_resource type="Script" uid="uid://brrwxbgwlhmc5" path="res://hint_label_2.gd" id="8_jifot"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r40rm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r6vdu"]
+
+[sub_resource type="Animation" id="Animation_jifot"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.909804, 0.0784314, 0.0745098, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qulpo"]
+resource_name = "capture"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.909804, 0.0784314, 0.0745098, 1), Color(0.0745098, 0.909804, 0.796078, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.14159]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3opl0"]
+_data = {
+&"RESET": SubResource("Animation_jifot"),
+&"capture": SubResource("Animation_qulpo")
+}
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_r40rm")
@@ -53,7 +138,16 @@ horizontal_alignment = 1
 z_index = 1
 position = Vector2(-431, 150)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_qulpo")
+texture = ExtResource("7_jifot")
+
+[node name="HintLabel2" type="Label" parent="CharacterBody2D" groups=["player"]]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -536.0
+offset_bottom = -301.0
+theme = ExtResource("6_rmy57")
+text = "Make Snake as short as possible"
+script = ExtResource("8_jifot")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
@@ -81,6 +175,11 @@ color = Color(0.909804, 0.0784314, 0.0745098, 1)
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_r6vdu")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head"]
+libraries = {
+&"": SubResource("AnimationLibrary_3opl0")
+}
+
 [node name="Body" parent="." instance=ExtResource("6_8i3m3")]
 position = Vector2(150, -550)
 
@@ -95,7 +194,7 @@ texture = ExtResource("5_r6vdu")
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_r6vdu")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Floor" type="ColorRect" parent="."]
 z_index = -1
 anchors_preset = 2
 anchor_top = 1.0
@@ -108,5 +207,6 @@ grow_vertical = 0
 color = Color(0.411765, 0.290196, 0.239216, 1)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Head" to="." method="_on_head_area_entered"]
 [connection signal="body_entered" from="Head" to="." method="_on_head_body_entered"]
 [connection signal="body_entered" from="Block" to="." method="_on_block_body_entered"]

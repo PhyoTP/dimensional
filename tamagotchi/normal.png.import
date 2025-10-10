@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7dbj3jet5hqq"
-path="res://.godot/imported/tamagotchi.png-ba9d716fee7cea3f5478c029cb6b1cd0.ctex"
+uid="uid://bf4t3rwnivlsw"
+path="res://.godot/imported/normal.png-1f11a9905bbe5d23efd8b2d2776507c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tamagotchi.png"
-dest_files=["res://.godot/imported/tamagotchi.png-ba9d716fee7cea3f5478c029cb6b1cd0.ctex"]
+source_file="res://tamagotchi/normal.png"
+dest_files=["res://.godot/imported/normal.png-1f11a9905bbe5d23efd8b2d2776507c2.ctex"]
 
 [params]
 

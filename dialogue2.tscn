@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://mpgyrac1wc3t" path="res://dialogue2.gd" id="1_3vr5m"]
 [ext_resource type="Texture2D" uid="uid://ohnjquui8por" path="res://Dialogue.png" id="2_5uajk"]
 [ext_resource type="Theme" uid="uid://b7y18yllnp2n1" path="res://maintheme.tres" id="3_nghrb"]
-[ext_resource type="Texture2D" uid="uid://c4uw7s2g7yacs" path="res://tamagotchib.png" id="4_5uajk"]
+[ext_resource type="Texture2D" uid="uid://cbflgyshlnfrn" path="res://tamagotchi/bouncer.png" id="4_5uajk"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

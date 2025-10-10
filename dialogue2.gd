@@ -25,7 +25,7 @@ var jap_dialogue = [
 var dialogue = jap_dialogue if Global.japanese else eng_dialogue
 var index = 0
 @onready var details = preload("res://Dialogue2.png")
-@onready var level2 = preload("res://soon.tscn")
+@onready var level2 = preload("res://level2.tscn")
 func _ready() -> void:
 	if Global.japanese:
 		get_parent().get_node("Label2").text = "押す"

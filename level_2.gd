@@ -4,16 +4,15 @@ var snake_list = []
 @onready var block: Area2D = get_node("Block")
 @onready var death = preload("res://deathscene.tscn")
 @onready var snake_body = preload("res://snake_body.tscn")
+var can_kill = true
 var direction = Vector2.RIGHT * 100
 
 func _ready() -> void:
 	snake_list = get_tree().get_nodes_in_group("snake")
 	length = len(snake_list)
-	print(snake_list)
 	Global.currentLevel = 2
 	snake_list[-1].body_entered.connect(Callable(self, "_on_snake_body_entered").bind(snake_list[-1]))
 func _on_timer_timeout() -> void:
-	print(snake_list)
 	var diff = block.position - snake_list[0].position
 	if direction.y == 0:
 		if not (direction.x > 0 and diff.x > 0 or direction.x < 0 and diff.x < 0):
@@ -62,8 +61,9 @@ func _on_block_body_entered(body: Node2D) -> void:
 
 
 func _on_head_body_entered(body: Node2D) -> void:
-	if body in get_tree().get_nodes_in_group("player"):
+	if body in get_tree().get_nodes_in_group("player") and can_kill == true:
 		get_tree().change_scene_to_packed(death)
+	
 
 func _on_snake_body_entered(body: Node2D, sender: Node2D) -> void:
 	print("entered")
@@ -78,3 +78,12 @@ func _on_snake_body_entered(body: Node2D, sender: Node2D) -> void:
 			$CharacterBody2D/LengthBar.texture = load("res://bars/bar "+str(length)+".png")
 			if length == 1:
 				get_tree().call_group("player", "_can_shoot")
+
+
+func _on_head_area_entered(area: Area2D) -> void:
+	if area in get_tree().get_nodes_in_group("beam"):
+		get_tree().call_group("player", "_captured")
+		$Timer.stop()
+		area.queue_free()
+		$Head/AnimationPlayer.current_animation = "capture"
+		can_kill = false

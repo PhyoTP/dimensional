@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3dhkqplqyl5l"
-path="res://.godot/imported/tamagotchil.png-fe93bc4beb1cdafa1a4c6137a88d1ff7.ctex"
+uid="uid://dp3cdefeow58d"
+path="res://.godot/imported/beam.png-b46583ce5061f55ed39c295eb09abebc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tamagotchil.png"
-dest_files=["res://.godot/imported/tamagotchil.png-fe93bc4beb1cdafa1a4c6137a88d1ff7.ctex"]
+source_file="res://tamagotchi/beam.png"
+dest_files=["res://.godot/imported/beam.png-b46583ce5061f55ed39c295eb09abebc.ctex"]
 
 [params]
 

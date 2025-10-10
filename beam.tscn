@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cw432nug0156l"]
+[gd_scene load_steps=3 format=3 uid="uid://grroe4mug6f3"]
 
 [ext_resource type="Script" uid="uid://cfc0cv7c8vvsk" path="res://beam.gd" id="1_i4dc2"]
 
-[node name="Beam" type="ColorRect"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4dc2"]
+size = Vector2(40, 20)
+
+[node name="Beam" type="Area2D" groups=["beam"]]
+script = ExtResource("1_i4dc2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -15,4 +21,6 @@ offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0745098, 0.909804, 0.796078, 1)
-script = ExtResource("1_i4dc2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i4dc2")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=4 uid="uid://cfy8svc6lc2gv"]
+[gd_scene load_steps=12 format=4 uid="uid://cfy8svc6lc2gv"]
 
 [ext_resource type="Script" uid="uid://bf1x5hfd0eq3x" path="res://2_dconverter.gd" id="1_v0ekn"]
 [ext_resource type="Material" uid="uid://d0wdyqnhd863d" path="res://2dconverter.tres" id="2_xb3n5"]
 [ext_resource type="Theme" uid="uid://b7y18yllnp2n1" path="res://maintheme.tres" id="3_xb3n5"]
+[ext_resource type="AudioStream" uid="uid://cbbbh8j7obv5h" path="res://riser.mp3" id="4_5iuma"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v38iq"]
 
@@ -690,3 +691,6 @@ theme = ExtResource("3_xb3n5")
 [node name="NextButton" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 text = "Return to HQ"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_5iuma")

@@ -31,8 +31,7 @@ func _on_area_entered(area: Area3D):
 		$Camera3D.current = true
 		$AnimationPlayer.current_animation = "spin"
 		get_tree().call_group("player", "entity_captured")
-		#get_tree().change_scene_to_packed(win)
-		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		$AudioStreamPlayer3D.play()
 func is_placed(coords: Vector3):
 	placed = true
 	global_position = coords

@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 @export var speed: float = 200.0
 var direction = Vector2.RIGHT.rotated(randf()*TAU)
-@onready var laser = preload("res://tamagotchil.png")
-@onready var captured = preload("res://tamagotchic.png")
-@onready var normal = preload("res://tamagotchi.png")
+@onready var laser = preload("res://tamagotchi/shoot.png")
+@onready var captured = preload("res://tamagotchi/captured.png")
+@onready var normal = preload("res://tamagotchi/normal.png")
 @onready var beam = preload("res://beam.tscn")
 var can_shoot = false
 func _physics_process(delta: float) -> void:
@@ -44,4 +44,7 @@ func _can_shoot():
 	can_shoot = true
 func _cant_shoot():
 	$Tamagotchi.texture = normal
+	can_shoot = false
+func _captured():
+	$Tamagotchi.texture = captured
 	can_shoot = false
