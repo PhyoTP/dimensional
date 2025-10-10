@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpm3c8qd7bs0y"]
+
+[ext_resource type="PackedScene" uid="uid://bjoqkf0swpvaf" path="res://deathscene.tscn" id="1_vg5ke"]
+[ext_resource type="Script" uid="uid://dm0t2m08j7g4r" path="res://losescene.gd" id="2_ntsmq"]
+
+[node name="Control" instance=ExtResource("1_vg5ke")]
+script = ExtResource("2_ntsmq")
+
+[node name="Label" parent="." index="0"]
+text = "Mission Failed"
+
+[node name="RespawnButton" parent="VBoxContainer" index="0"]
+text = "Retry"

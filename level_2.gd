@@ -1,9 +1,11 @@
 extends Node2D
 var length = 0
 var snake_list = []
-@onready var block: Area2D = get_node("Block")
+@onready var blocks = []
 @onready var death = preload("res://deathscene.tscn")
 @onready var snake_body = preload("res://snake_body.tscn")
+@onready var block = preload("res://block2d.tscn")
+@onready var lose = preload("res://losescene.tscn")
 var can_kill = true
 var direction = Vector2.RIGHT * 100
 
@@ -12,8 +14,23 @@ func _ready() -> void:
 	length = len(snake_list)
 	Global.currentLevel = 2
 	snake_list[-1].body_entered.connect(Callable(self, "_on_snake_body_entered").bind(snake_list[-1]))
+	blocks = get_tree().get_nodes_in_group("block")
+	for i in range(8):
+		var newBlock = block.instantiate()
+		newBlock.position = rand_pos()
+		add_child(newBlock)
+	blocks = get_tree().get_nodes_in_group("block")
 func _on_timer_timeout() -> void:
-	var diff = block.position - snake_list[0].position
+	blocks = get_tree().get_nodes_in_group("block")
+	var block_diffs = blocks.map(func(i): return i.position - snake_list[0].position)
+	var min_dist = block_diffs[0]
+	var min_index = 0
+	for i in range(1, block_diffs.size()):
+		if abs(block_diffs[i].x) + abs(block_diffs[i].y) < abs(min_dist.x) + abs(min_dist.y):
+			min_dist = block_diffs[i]
+			min_index = i
+	var diff = min_dist
+	var block = blocks[min_index]
 	if direction.y == 0:
 		if not (direction.x > 0 and diff.x > 0 or direction.x < 0 and diff.x < 0):
 			if diff.y > 0:
@@ -30,9 +47,13 @@ func _on_timer_timeout() -> void:
 	snake_coords.insert(0, snake_coords[0] + direction)
 	if snake_coords[0] == block.position:
 		length += 1
-		block.position = Vector2(850-randi_range(0, 9)*100,50-randi_range(0,9)*100)
+		if length > 10:
+			get_tree().change_scene_to_packed(lose)
+			return
+		block.queue_free()
 		$CharacterBody2D/ScoreLabel.text = str(length)
 		$CharacterBody2D/LengthBar.texture = load("res://bars/bar "+str(length)+".png")
+		$Head/PopPlayer.play()
 	snake_coords = snake_coords.slice(0,length)
 	if length > 1:
 		get_tree().call_group("player", "_cant_shoot")
@@ -45,18 +66,9 @@ func _on_timer_timeout() -> void:
 			add_child(newBody)
 		else:
 			snake_list[i].position = snake_coords[i]
+	
 
 
-func _on_block_body_entered(body: Node2D) -> void:
-	if body in get_tree().get_nodes_in_group("player"):
-		var player_pos = body.position
-		var diff = player_pos - block.position
-		# Compare which axis had the stronger hit
-		if abs(diff.x) >= abs(diff.y):
-			body.direction.x = -body.direction.x
-		if abs(diff.x) <= abs(diff.y):
-			body.direction.y = -body.direction.y
-	body.get_node("./BouncePlayer").play()
 		
 
 
@@ -71,6 +83,9 @@ func _on_snake_body_entered(body: Node2D, sender: Node2D) -> void:
 		var index = snake_list.find(sender)
 		for i in snake_list.slice(index):
 			i.queue_free()
+			var newBlock = block.instantiate()
+			newBlock.position = rand_pos()
+			add_child(newBlock)
 		snake_list = snake_list.slice(0, index)
 		if index != -1:
 			length = index
@@ -79,11 +94,16 @@ func _on_snake_body_entered(body: Node2D, sender: Node2D) -> void:
 			if length == 1:
 				get_tree().call_group("player", "_can_shoot")
 
-
+func rand_pos() -> Vector2:
+	var none = (snake_list + blocks).map(func(i): if "position" in i: return i.position)
+	var pos = Vector2(850-randi_range(0, 9)*100,50-randi_range(0,9)*100)
+	if pos in none:
+		return rand_pos()
+	else:
+		return pos
 func _on_head_area_entered(area: Area2D) -> void:
 	if area in get_tree().get_nodes_in_group("beam"):
 		get_tree().call_group("player", "_captured")
 		$Timer.stop()
-		area.queue_free()
 		$Head/AnimationPlayer.current_animation = "capture"
 		can_kill = false

@@ -1,5 +1,5 @@
 extends Label
-
+@onready var soon = preload("res://soon.tscn")
 func _ready() -> void:
 	_cant_shoot()
 func _can_shoot():
@@ -17,3 +17,10 @@ func _captured():
 		text = "「よかった、HQにかえります」"
 	else:
 		text = "\"Good job agent, now return to HQ.\""
+	await get_tree().create_timer(5.0).timeout
+	if Global.japanese:
+		text = "「ちょっと待って、別の化け物があるみたいです。」"
+	else:
+		text = "\"Hold on, I think there's another entity here.\""
+	await get_tree().create_timer(3.0).timeout
+	get_tree().change_scene_to_packed(soon)

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://8uvdw84n881q"]
+
+[ext_resource type="Script" uid="uid://de44srwgp3uxh" path="res://block2d.gd" id="1_dqpc3"]
+[ext_resource type="Texture2D" uid="uid://bv481811gwni8" path="res://square2d.png" id="2_dospa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r6vdu"]
+
+[node name="Block" type="Area2D" groups=["block"]]
+script = ExtResource("1_dqpc3")
+
+[node name="Square2d" type="Sprite2D" parent="."]
+scale = Vector2(1.39, 1.39)
+texture = ExtResource("2_dospa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_r6vdu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

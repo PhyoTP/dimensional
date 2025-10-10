@@ -5,6 +5,7 @@ var direction = Vector2.RIGHT.rotated(randf()*TAU)
 @onready var laser = preload("res://tamagotchi/shoot.png")
 @onready var captured = preload("res://tamagotchi/captured.png")
 @onready var normal = preload("res://tamagotchi/normal.png")
+@onready var detected = preload("res://tamagotchi/detected.png")
 @onready var beam = preload("res://beam.tscn")
 var can_shoot = false
 func _physics_process(delta: float) -> void:
@@ -48,3 +49,7 @@ func _cant_shoot():
 func _captured():
 	$Tamagotchi.texture = captured
 	can_shoot = false
+	await get_tree().create_timer(3.0).timeout
+	$Tamagotchi.texture = detected
+	$DetectedPlayer.play()
+	
