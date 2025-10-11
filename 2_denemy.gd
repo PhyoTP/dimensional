@@ -1,15 +1,16 @@
 extends Area3D
-var rand = randf_range(0.1,-0.1)
-var direction = Vector3(rand, 0, sqrt(0.01-rand**2))
+var rand_angle = randf() * TAU
+var direction = Vector3(cos(rand_angle), 0, sin(rand_angle))
 @onready var death = preload("res://deathscene.tscn")
 @onready var track = preload("res://track.png")
 @onready var found = preload("res://found.png")
 var caught = false
+var speed = 5
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	area_entered.connect(_on_area_entered)
-func _physics_process(_delta: float) -> void:
-	translate(direction)
+func _physics_process(delta: float) -> void:
+	global_position += direction * speed * delta
 	$MeshInstance3D.rotation.y = atan2(direction.x, direction.z) - PI/2
 	
 func _on_body_entered(body: Node3D):
@@ -25,8 +26,7 @@ func _on_body_entered(body: Node3D):
 			direction.z = -direction.z
 		$MeshInstance3D.mesh.material.albedo_texture = track
 		$BouncePlayer.play()
-		print(direction)
-		print($MeshInstance3D.rotation.y)
+		speed = 5
 	if body.is_in_group("player"):
 		print("dead")
 		get_tree().change_scene_to_packed(death)
@@ -38,7 +38,7 @@ func _on_area_entered(area: Node3D):
 		var conv_pos = area.global_transform.origin
 		var diff = conv_pos - my_pos
 		var dist = sqrt(diff.x**2 + diff.y**2 + diff.z**2)
-		var ratio = dist/270
+		var ratio = dist/27
 		direction = Vector3(diff.x*ratio, diff.y*ratio, diff.z*ratio)
 		$AnimationPlayer.current_animation = "caught"
 		$AnimationPlayer.animation_finished.connect(queue_free)
@@ -49,8 +49,9 @@ func player_on_ground():
 		var player_pos = player.global_transform.origin
 		var diff =	player_pos - my_pos
 		var dist = sqrt(diff.x**2 + diff.z**2)
-		var ratio = 0.1/dist
+		var ratio = 1/dist
 		direction = Vector3(diff.x*ratio, 0, diff.z*ratio)
+		speed = 7.5
 		$MeshInstance3D.mesh.material.albedo_texture = found
 		if not $FoundPlayer.playing:
 			$FoundPlayer.play()

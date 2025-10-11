@@ -22,7 +22,7 @@ func _process(_delta: float) -> void:
 				positive = true
 	
 func _on_body_entered(body: Node3D):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and visible == true:
 		get_tree().call_group("player", "get_two_converter")
 		visible = false
 func _on_area_entered(area: Area3D):
