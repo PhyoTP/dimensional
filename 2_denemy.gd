@@ -38,10 +38,10 @@ func _on_area_entered(area: Node3D):
 		var conv_pos = area.global_transform.origin
 		var diff = conv_pos - my_pos
 		var dist = sqrt(diff.x**2 + diff.y**2 + diff.z**2)
-		var ratio = dist/27
+		var ratio = dist/36
 		direction = Vector3(diff.x*ratio, diff.y*ratio, diff.z*ratio)
 		$AnimationPlayer.current_animation = "caught"
-		$AnimationPlayer.animation_finished.connect(queue_free)
+		$AnimationPlayer.animation_finished.connect(call_deferred)
 func player_on_ground():
 	if not caught:
 		var player = get_tree().get_nodes_in_group("player")[0]

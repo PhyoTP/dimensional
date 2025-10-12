@@ -8,7 +8,7 @@ var direction = Vector2.RIGHT.rotated(randf()*TAU)
 @onready var detected = preload("res://tamagotchi/detected.png")
 @onready var beam = preload("res://beam.tscn")
 var can_shoot = false
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_pressed("ui_right"):
 		if direction.x < 1:
