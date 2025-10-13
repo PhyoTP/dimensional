@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://ywoaa20y4cqj"]
+[gd_scene load_steps=6 format=3 uid="uid://ywoaa20y4cqj"]
 
 [ext_resource type="Script" uid="uid://dgokriixiikdw" path="res://character_body_3d.gd" id="1_iwpo4"]
+[ext_resource type="Texture2D" uid="uid://dj5gcbw2q35pr" path="res://suitman(9).png" id="2_fb3t6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iwpo4"]
+transparency = 1
+albedo_texture = ExtResource("2_fb3t6")
+uv1_offset = Vector3(0, 0.01, 0)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_fb3t6"]
 material = SubResource("StandardMaterial3D_iwpo4")
