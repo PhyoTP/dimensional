@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://b78x13714oket"]
+[gd_scene load_steps=13 format=3 uid="uid://b78x13714oket"]
 
 [ext_resource type="PackedScene" uid="uid://ywoaa20y4cqj" path="res://character_body_3d.tscn" id="1_jwv3a"]
+[ext_resource type="Texture2D" uid="uid://crrxolt4kuj8g" path="res://square3d.png" id="1_xy4tn"]
 [ext_resource type="PackedScene" uid="uid://ymr7e85bwtco" path="res://3dblock.tscn" id="2_dopym"]
 [ext_resource type="PackedScene" uid="uid://cfy8svc6lc2gv" path="res://2_dconverterreal.tscn" id="3_v8kj3"]
 [ext_resource type="PackedScene" uid="uid://04mqe5fkp75h" path="res://2_denemy.tscn" id="4_i2041"]
@@ -10,13 +11,17 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwv3a"]
 albedo_color = Color(0.411765, 0.290196, 0.239216, 1)
-metallic = 1.0
+albedo_texture = ExtResource("1_xy4tn")
+metallic_specular = 0.0
+roughness = 0.5
+uv1_scale = Vector3(60, 60, 60)
+uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_lgp48"]
 material = SubResource("StandardMaterial3D_jwv3a")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jwv3a"]
-size = Vector3(50, 1, 50)
+size = Vector3(60, 1, 60)
 
 [sub_resource type="Environment" id="Environment_lgp48"]
 background_mode = 1
@@ -32,14 +37,14 @@ shadow_enabled = true
 [node name="Floor" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
-transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 30, 0, 0, 0)
+transform = Transform3D(60, 0, 0, 0, 1, 0, 0, 0, 60, 0, 0, 0)
 mesh = SubResource("BoxMesh_lgp48")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_jwv3a")
 
 [node name="CharacterBody3D" parent="." groups=["player"] instance=ExtResource("1_jwv3a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4204, 2.55549, 10.8127)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11, 2.555, 11)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lgp48")
@@ -48,85 +53,137 @@ environment = SubResource("Environment_lgp48")
 transform = Transform3D(0.868308, -0.491481, 0.0669873, 0.0669873, 0.25, 0.965926, -0.491481, -0.834234, 0.25, 0, 0, 0)
 
 [node name="block" parent="." instance=ExtResource("2_dopym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4204, 1, 10.8127)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1, 11)
 size = Vector3(2, 1, 2)
 
 [node name="block2" parent="." instance=ExtResource("2_dopym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.61103, 1.25, 10.3435)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1.25, 10.5)
 size = Vector3(1, 1.5, 1)
 
 [node name="block3" parent="." instance=ExtResource("2_dopym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.63169, 1.5, 9.39037)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.5, 9.5)
 size = Vector3(1, 2, 1)
 
 [node name="block4" parent="." instance=ExtResource("2_dopym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.542684, 1.75, 8.15441)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, 8.5)
 size = Vector3(1, 2.5, 1)
 
 [node name="block5" parent="." instance=ExtResource("2_dopym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77074, 2, 6.06036)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, 6.5)
 size = Vector3(1, 3, 1)
 
 [node name="block6" parent="." instance=ExtResource("2_dopym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.46174, 2.25, 3.75336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2.25, 4.5)
 size = Vector3(1, 3.5, 1)
 
 [node name="block7" parent="." instance=ExtResource("2_dopym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.62474, 2.5, 1.33236)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 2.5, 1.5)
 size = Vector3(1, 4, 1)
 
 [node name="block8" parent="." instance=ExtResource("2_dopym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.66174, 2.75, -0.878636)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.75, -0.5)
 size = Vector3(1, 4.5, 1)
 
 [node name="block9" parent="." instance=ExtResource("2_dopym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.31474, 3, -4.06964)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 3, -3.5)
 size = Vector3(1, 5, 1)
 
 [node name="block10" parent="." instance=ExtResource("2_dopym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.87674, 3.25, -7.24964)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 3.25, -6.5)
 size = Vector3(1, 5.5, 1)
 
 [node name="block11" parent="." instance=ExtResource("2_dopym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.97574, 3.5, -10.2256)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3.5, -10)
 size = Vector3(2, 6, 2)
 
 [node name="block12" parent="." instance=ExtResource("2_dopym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.30885, 1.5, 7.0809)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.5, 7)
 size = Vector3(2, 2, 2)
 
+[node name="block24" parent="." instance=ExtResource("2_dopym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1.5, 4.5)
+size = Vector3(1, 2, 1)
+
+[node name="block25" parent="." instance=ExtResource("2_dopym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 1.25, 7.5)
+size = Vector3(1, 1.5, 1)
+
+[node name="block23" parent="." instance=ExtResource("2_dopym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1.75, 1.5)
+size = Vector3(1, 2.5, 1)
+
+[node name="block32" parent="." instance=ExtResource("2_dopym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1.75, -1.5)
+size = Vector3(1, 2.5, 1)
+
+[node name="block21" parent="." instance=ExtResource("2_dopym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 2.25, -8.5)
+size = Vector3(1, 3.5, 1)
+
+[node name="block26" parent="." instance=ExtResource("2_dopym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.5, -10.5)
+size = Vector3(1, 4, 1)
+
+[node name="block30" parent="." instance=ExtResource("2_dopym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 2.5, -9.5)
+size = Vector3(1, 4, 1)
+
+[node name="block27" parent="." instance=ExtResource("2_dopym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.75, -11.5)
+size = Vector3(1, 4.5, 1)
+
+[node name="block28" parent="." instance=ExtResource("2_dopym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 3, -12.5)
+size = Vector3(1, 5, 1)
+
+[node name="block29" parent="." instance=ExtResource("2_dopym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 3.25, -11.5)
+size = Vector3(1, 5.5, 1)
+
 [node name="block13" parent="." instance=ExtResource("2_dopym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.93559, 2, 2.32764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 2)
 size = Vector3(2, 3, 2)
 
+[node name="block22" parent="." instance=ExtResource("2_dopym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 2, -4.5)
+size = Vector3(1, 3, 1)
+
+[node name="block31" parent="." instance=ExtResource("2_dopym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 2, -6.5)
+size = Vector3(1, 3, 1)
+
 [node name="block14" parent="." instance=ExtResource("2_dopym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124664, 2.5, -2.13989)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2)
 size = Vector3(2, 4, 2)
 
 [node name="block15" parent="." instance=ExtResource("2_dopym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.28357, 3, -6.15321)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, -6)
 size = Vector3(2, 5, 2)
 
 [node name="2dconverter" parent="." groups=["converter"] instance=ExtResource("3_v8kj3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.976, 7.6, -10.226)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 7.6, -10)
 
 [node name="2denemy" parent="." instance=ExtResource("4_i2041")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.462, 0.5, -10.112)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.538, 0.5, 10.888)
 
 [node name="block16" parent="." instance=ExtResource("6_crycw")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -30, 0, 0)
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -30, 15.5, 0)
 script = null
 
 [node name="block17" parent="." instance=ExtResource("6_crycw")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 30, 0, 0)
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 30, 15.5, 0)
 script = null
 
 [node name="block18" parent="." instance=ExtResource("6_crycw")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 30)
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 15.5, 30)
 script = null
 
 [node name="block19" parent="." instance=ExtResource("6_crycw")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, -30)
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 15.5, -30)
+script = null
+
+[node name="block20" parent="." instance=ExtResource("6_crycw")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 45.5, 0)
 script = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

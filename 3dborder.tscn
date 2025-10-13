@@ -1,9 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://gldptvit1t1c"]
+[gd_scene load_steps=6 format=3 uid="uid://gldptvit1t1c"]
 
-[ext_resource type="PackedScene" uid="uid://ymr7e85bwtco" path="res://3dblock.tscn" id="1_y0yij"]
+[ext_resource type="Script" uid="uid://dphjupele4vb3" path="res://3_dblock.gd" id="1_mftts"]
+[ext_resource type="Texture2D" uid="uid://swl58s3lqqtn" path="res://squareempty.png" id="2_mftts"]
 
-[node name="block" instance=ExtResource("1_y0yij")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_y0yij"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xurk"]
+transparency = 1
+albedo_color = Color(0.9098039, 0.31764707, 0.07058824, 1)
+albedo_texture = ExtResource("2_mftts")
+roughness = 0.5
+uv1_scale = Vector3(30, 30, 30)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_mftts"]
+material = SubResource("StandardMaterial3D_3xurk")
+
+[node name="block" type="StaticBody3D" groups=["block"]]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+script = ExtResource("1_mftts")
 
-[node name="MeshInstance3D" parent="." index="1"]
-visible = false
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_y0yij")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_mftts")

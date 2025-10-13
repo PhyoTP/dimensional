@@ -1,14 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://ymr7e85bwtco"]
+[gd_scene load_steps=5 format=3 uid="uid://ymr7e85bwtco"]
 
 [ext_resource type="Script" uid="uid://dphjupele4vb3" path="res://3_dblock.gd" id="1_3xurk"]
-[ext_resource type="Texture2D" uid="uid://bv481811gwni8" path="res://square2d.png" id="1_bpbj7"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_dopym"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_bpbj7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xurk"]
-albedo_texture = ExtResource("1_bpbj7")
+albedo_color = Color(0.9098039, 0.31764707, 0.07058824, 1)
 metallic = 1.0
-uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_3xurk"]
 material = SubResource("StandardMaterial3D_3xurk")
@@ -17,7 +15,7 @@ material = SubResource("StandardMaterial3D_3xurk")
 script = ExtResource("1_3xurk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_dopym")
+shape = SubResource("BoxShape3D_bpbj7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_3xurk")
