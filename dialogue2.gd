@@ -9,7 +9,10 @@ var eng_dialogue = [
 	"Your next mission is in the 2nd Dimension.",
 	"There is a 1 dimensional entity called Snake, which gained the ability to turn and is consuming everything.",
 	"If things get out of hand, it could be disastrous.",
-	"Use your Replicator to turn into Bouncer and neutralise it."
+	"Use your Replicator to turn into Bouncer and neutralise it.",
+	"Bouncer can destroy the body of Snake, but the head is much stronger and can eliminate Bouncer.",
+	"So your best bet is to cut it as short as possible so the Replicator can capture it.",
+	"Once again, good luck."
 ]
 var jap_dialogue = [
 	"よくやった、最初の任務をしまいました。",
@@ -20,7 +23,9 @@ var jap_dialogue = [
 	"次の任務は二次元の世界にあります。",
 	"「スネーク」という一次元の化け物がある、曲がれるようになった、すべてを食べています。",
 	"このままでは、取り返しのつかないことになるかもしれない。",
-	"複写機を使ってバウンサーになる、スネークを無力化します。"
+	"複写機を使ってバウンサーになる、スネークを無力化します。",
+	"バウンサーはスネークの胴体を壊せますが、スネークの頭はバウンサーを壊せます。",
+	"複写機は捕まえれるために、スネークの胴体を全部壊さなくてはいけません。"
 ]
 var dialogue = jap_dialogue if Global.japanese else eng_dialogue
 var index = 0

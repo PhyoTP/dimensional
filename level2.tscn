@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://2imelvicpo2j"]
+[gd_scene load_steps=20 format=3 uid="uid://2imelvicpo2j"]
 
 [ext_resource type="Script" uid="uid://d4brpplkmcxbm" path="res://level_2.gd" id="1_r40rm"]
 [ext_resource type="Script" uid="uid://inr7thcm7nea" path="res://character_2d.gd" id="3_6q4t8"]
@@ -11,7 +11,9 @@
 [ext_resource type="Script" uid="uid://brrwxbgwlhmc5" path="res://hint_label_2.gd" id="8_jifot"]
 [ext_resource type="AudioStream" uid="uid://bfb2e5y1fblk1" path="res://pop.mp3" id="9_3opl0"]
 [ext_resource type="AudioStream" uid="uid://buvk1dyjq10k" path="res://found.wav" id="9_dc5vx"]
+[ext_resource type="Texture2D" uid="uid://b8mtqcnj2hpyo" path="res://chevron.png" id="9_s8oj7"]
 [ext_resource type="PackedScene" uid="uid://8uvdw84n881q" path="res://block2d.tscn" id="12_dc5vx"]
+[ext_resource type="Texture2D" uid="uid://crrxolt4kuj8g" path="res://square3d.png" id="14_mw4xc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r40rm"]
 
@@ -152,6 +154,13 @@ theme = ExtResource("6_rmy57")
 text = "Make Snake as short as possible"
 script = ExtResource("8_jifot")
 
+[node name="Chevron" type="Sprite2D" parent="CharacterBody2D"]
+z_index = 1
+position = Vector2(550, -25)
+rotation = -0.25132743
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_s8oj7")
+
 [node name="DetectedPlayer" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
 stream = ExtResource("9_dc5vx")
 
@@ -160,7 +169,7 @@ wait_time = 0.6
 autostart = true
 
 [node name="Head" type="Area2D" parent="." groups=["snake"]]
-position = Vector2(250, -550)
+position = Vector2(650, -50)
 
 [node name="ColorRect" type="ColorRect" parent="Head"]
 anchors_preset = 8
@@ -190,22 +199,21 @@ libraries = {
 stream = ExtResource("9_3opl0")
 
 [node name="Body" parent="." instance=ExtResource("6_8i3m3")]
-position = Vector2(150, -550)
+position = Vector2(550, -50)
 
 [node name="Block" parent="." instance=ExtResource("12_dc5vx")]
-position = Vector2(650, -550)
+position = Vector2(1050, -50)
 
-[node name="Floor" type="ColorRect" parent="."]
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
 z_index = -1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -900.0
+offset_left = -600.0
+offset_top = -1500.0
 offset_right = 900.0
-offset_bottom = 100.0
-grow_vertical = 0
-color = Color(0.411765, 0.290196, 0.239216, 1)
+scale = Vector2(2, 2)
+texture = ExtResource("14_mw4xc")
+region_rect = Rect2(0, 0, 50, 50)
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Head" to="." method="_on_head_area_entered"]

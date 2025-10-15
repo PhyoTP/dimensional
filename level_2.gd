@@ -1,11 +1,12 @@
 extends Node2D
 var length = 0
-var snake_list = []
+var snake_list: Array[Node] = []
 @onready var blocks = []
 @onready var death = preload("res://deathscene.tscn")
 @onready var snake_body = preload("res://snake_body.tscn")
 @onready var block = preload("res://block2d.tscn")
 @onready var lose = preload("res://losescene.tscn")
+@onready var blackhole = preload("res://blackhole_entity.tscn")
 var can_kill = true
 var direction = Vector2.RIGHT * 100
 
@@ -30,7 +31,7 @@ func _on_timer_timeout() -> void:
 			min_dist = block_diffs[i]
 			min_index = i
 	var diff = min_dist
-	var block = blocks[min_index]
+	var min_block = blocks[min_index]
 	if direction.y == 0:
 		if not (direction.x > 0 and diff.x > 0 or direction.x < 0 and diff.x < 0):
 			if diff.y > 0:
@@ -45,32 +46,36 @@ func _on_timer_timeout() -> void:
 				direction = Vector2.LEFT * 100
 	var snake_coords = snake_list.map(func(i): return i.position)
 	snake_coords.insert(0, snake_coords[0] + direction)
-	if snake_coords[0] == block.position:
+	if snake_coords[0] == min_block.position:
 		length += 1
 		if length > 10:
 			get_tree().change_scene_to_packed(lose)
 			return
-		block.queue_free()
+		min_block.queue_free()
 		$CharacterBody2D/ScoreLabel.text = str(length)
 		$CharacterBody2D/LengthBar.texture = load("res://bars/bar "+str(length)+".png")
 		$Head/PopPlayer.play()
 	snake_coords = snake_coords.slice(0,length)
 	if length > 1:
 		get_tree().call_group("player", "_cant_shoot")
+	var tween = create_tween().set_parallel(true)
+
 	for i in range(length):
-		if i >= len(snake_list):
-			var newBody = snake_body.instantiate()
-			newBody.position = snake_coords[i]
-			newBody.body_entered.connect(Callable(self, "_on_snake_body_entered").bind(newBody))
-			snake_list.append(newBody)
-			add_child(newBody)
+		if i >= snake_list.size():
+			# Instantiate and add a new body segment if needed
+			var new_body = snake_body.instantiate()
+			new_body.position = snake_coords[i]
+			new_body.body_entered.connect(_on_snake_body_entered.bind(new_body))
+			snake_list.append(new_body)
+			add_child(new_body)
 		else:
-			snake_list[i].position = snake_coords[i]
-	
-
-
-		
-
+			# Smoothly move existing segments toward new positions
+			tween.tween_property(
+				snake_list[i], 
+				"position", 
+				snake_coords[i], 
+				0.6
+			)
 
 func _on_head_body_entered(body: Node2D) -> void:
 	if body in get_tree().get_nodes_in_group("player") and can_kill == true:
@@ -95,8 +100,8 @@ func _on_snake_body_entered(body: Node2D, sender: Node2D) -> void:
 				get_tree().call_group("player", "_can_shoot")
 
 func rand_pos() -> Vector2:
-	var none = (snake_list + blocks).map(func(i): if "position" in i: return i.position)
-	var pos = Vector2(850-randi_range(0, 9)*100,50-randi_range(0,9)*100)
+	var none = (snake_list + blocks).map(func(i): if is_instance_valid(i): return i.position)
+	var pos = Vector2(1850-randi_range(0, 18)*100,950-randi_range(0,18)*100)
 	if pos in none:
 		return rand_pos()
 	else:
@@ -107,3 +112,10 @@ func _on_head_area_entered(area: Area2D) -> void:
 		$Timer.stop()
 		$Head/AnimationPlayer.current_animation = "capture"
 		can_kill = false
+		await get_tree().create_timer(1.0).timeout
+		$Head.queue_free()
+		await get_tree().create_timer(9.0).timeout
+		var hole = blackhole.instantiate()
+		hole.position = rand_pos()
+		add_child(hole)
+		

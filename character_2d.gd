@@ -7,9 +7,10 @@ var direction = Vector2.RIGHT.rotated(randf()*TAU)
 @onready var normal = preload("res://tamagotchi/normal.png")
 @onready var detected = preload("res://tamagotchi/detected.png")
 @onready var beam = preload("res://beam.tscn")
+@onready var target: Node2D = get_tree().get_first_node_in_group("snake")
 var can_shoot = false
+var snake_captured = false
 func _physics_process(_delta: float) -> void:
-	
 	if Input.is_action_pressed("ui_right"):
 		if direction.x < 1:
 			direction.x += 0.1
@@ -22,10 +23,10 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("ui_up"):
 		if direction.y > -1:
 			direction.y -= 0.1
-	if position.x > 850 or position.x < -50:
+	if position.x > 2360 or position.x < -560:
 		direction.x = -direction.x
 		$BouncePlayer.play()
-	if position.y < -850 or position.y > 50:
+	if position.y < -1460 or position.y > 1460:
 		direction.y = -direction.y
 		$BouncePlayer.play()
 	# Normalize so diagonal movement isn't faster
@@ -34,6 +35,24 @@ func _physics_process(_delta: float) -> void:
 	$Track.rotation = atan2(direction.y, direction.x)
 	velocity = direction * speed
 	move_and_slide()
+	if target:
+		var diff = target.position - position
+		if diff.x > -576 and diff.x < 576 and diff.y < 274 and diff.y > -274:
+			$Chevron.visible = false
+		else: 
+			$Chevron.visible = true
+		if diff.x > 526:
+			diff = Vector2(526, diff.y*526/diff.x)
+		if diff.y > 274:
+			diff = Vector2(diff.x*274/diff.y, 274)
+		if diff.x < -526:
+			diff = Vector2(-526, diff.y*526/-diff.x)
+		if diff.y < -274:
+			diff = Vector2(diff.x*274/-diff.y, -274)
+		$Chevron.position = diff
+		$Chevron.rotation = atan2(diff.y, diff.x)
+	else:
+		$Chevron.visible = false
 func _input(event: InputEvent) -> void:
 	if can_shoot and event is InputEventKey and event.keycode == Key.KEY_F and event.pressed:
 		var newBeam = beam.instantiate()
@@ -49,7 +68,12 @@ func _cant_shoot():
 func _captured():
 	$Tamagotchi.texture = captured
 	can_shoot = false
+	snake_captured = true
 	await get_tree().create_timer(3.0).timeout
 	$Tamagotchi.texture = detected
 	$DetectedPlayer.play()
+	await get_tree().create_timer(7.0).timeout
+	target = get_tree().get_first_node_in_group("hole")
+	
+	
 	
