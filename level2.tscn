@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://buvk1dyjq10k" path="res://found.wav" id="9_dc5vx"]
 [ext_resource type="Texture2D" uid="uid://b8mtqcnj2hpyo" path="res://chevron.png" id="9_s8oj7"]
 [ext_resource type="PackedScene" uid="uid://8uvdw84n881q" path="res://block2d.tscn" id="12_dc5vx"]
-[ext_resource type="Texture2D" uid="uid://crrxolt4kuj8g" path="res://square3d.png" id="14_mw4xc"]
+[ext_resource type="Texture2D" uid="uid://6vpl46pj6ghq" path="res://square3dsmall(1).png" id="14_mw4xc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r40rm"]
 
@@ -211,9 +211,8 @@ offset_top = -1500.0
 offset_right = 900.0
 scale = Vector2(2, 2)
 texture = ExtResource("14_mw4xc")
-region_rect = Rect2(0, 0, 50, 50)
-axis_stretch_horizontal = 2
-axis_stretch_vertical = 2
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Head" to="." method="_on_head_area_entered"]

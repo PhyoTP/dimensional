@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://by22gv1oug7p7"]
+[gd_scene load_steps=7 format=3 uid="uid://by22gv1oug7p7"]
 
 [ext_resource type="Texture2D" uid="uid://bi5sf3omwto3b" path="res://blackhole.png" id="1_4446m"]
+[ext_resource type="Script" uid="uid://b63pwwt01s6j8" path="res://blackhole_entity.gd" id="1_k0ev3"]
 
 [sub_resource type="Animation" id="Animation_lwvnx"]
 length = 0.001
@@ -41,6 +42,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_mw4xc"]
 
 [node name="blackhole entity" type="Area2D" groups=["hole"]]
+script = ExtResource("1_k0ev3")
 
 [node name="Blackhole" type="Sprite2D" parent="."]
 texture = ExtResource("1_4446m")

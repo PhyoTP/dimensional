@@ -3,9 +3,9 @@ func _ready() -> void:
 	_cant_shoot()
 func _can_shoot():
 	if Global.japanese:
-		text = "撃って捕まえる"
+		text = "「F」を押して撃って捕まえる"
 	else:
-		text = "Shoot to capture"
+		text = "Shoot beam by pressing F to capture"
 func _cant_shoot():
 	if Global.japanese:
 		text = "スネークを短くする"

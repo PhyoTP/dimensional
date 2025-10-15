@@ -46,7 +46,7 @@ func _on_timer_timeout() -> void:
 				direction = Vector2.LEFT * 100
 	var snake_coords = snake_list.map(func(i): return i.position)
 	snake_coords.insert(0, snake_coords[0] + direction)
-	if snake_coords[0] == min_block.position:
+	if snake_list[0].overlaps_area(min_block):
 		length += 1
 		if length > 10:
 			get_tree().change_scene_to_packed(lose)
