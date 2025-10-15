@@ -22,4 +22,6 @@ func _captured():
 	else:
 		text = "\"Hold on, I think there's another entity here.\""
 	await get_tree().create_timer(3.0).timeout
+	text = "It's a black hole, it's impossible to escape, just go in it!"
+	
 	
