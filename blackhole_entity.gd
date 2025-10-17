@@ -1,6 +1,6 @@
 extends Area2D
 @onready var blocks = get_tree().get_nodes_in_group("block") + [get_tree().get_first_node_in_group("player")]
-@onready var soon = preload("res://soon.tscn")
+@onready var level = preload("res://black_hole_level.tscn")
 func _ready() -> void:
 	area_entered.connect(block_entered)
 	body_entered.connect(player_entered)
@@ -19,4 +19,5 @@ func block_entered(block: Node2D):
 	block.queue_free()
 func player_entered(player: Node2D):
 	if player in get_tree().get_nodes_in_group("player"):
-		get_tree().change_scene_to_packed(soon)
+		Global.currentLevel = 2.5
+		get_tree().change_scene_to_packed(level)

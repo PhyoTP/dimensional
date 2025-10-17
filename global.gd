@@ -1,4 +1,4 @@
 extends Node
 
 var japanese: bool = false
-var currentLevel: int = 1
+var currentLevel: float = 2.5

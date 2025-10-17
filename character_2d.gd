@@ -1,15 +1,21 @@
 extends CharacterBody2D
 
 @export var speed: float = 200.0
-var direction = Vector2.RIGHT.rotated(randf()*TAU)
+@export var direction = Vector2.RIGHT.rotated(randf()*TAU)
 @onready var laser = preload("res://tamagotchi/shoot.png")
 @onready var captured = preload("res://tamagotchi/captured.png")
 @onready var normal = preload("res://tamagotchi/normal.png")
 @onready var detected = preload("res://tamagotchi/detected.png")
 @onready var beam = preload("res://beam.tscn")
-@onready var target: Node2D = get_tree().get_first_node_in_group("snake")
+@export var target: Node2D
+@export var x_bounds = Vector2(2360, -560)
+@export var y_bounds = Vector2(-1460, 1460)
 var can_shoot = false
 var snake_captured = false
+func _ready() -> void:
+	if Global.currentLevel == 2.5:
+		$ScoreLabel.visible = false
+		$LengthBar.visible = false
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("ui_right"):
 		if direction.x < 1:
@@ -23,10 +29,10 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("ui_up"):
 		if direction.y > -1:
 			direction.y -= 0.1
-	if position.x > 2360 or position.x < -560:
+	if position.x > x_bounds.x or position.x < x_bounds.y:
 		direction.x = -direction.x
 		$BouncePlayer.play()
-	if position.y < -1460 or position.y > 1460:
+	if position.y < y_bounds.x or position.y > y_bounds.y:
 		direction.y = -direction.y
 		$BouncePlayer.play()
 	# Normalize so diagonal movement isn't faster

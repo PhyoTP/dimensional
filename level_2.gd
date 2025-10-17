@@ -113,7 +113,6 @@ func _on_head_area_entered(area: Area2D) -> void:
 		$Head/AnimationPlayer.current_animation = "capture"
 		can_kill = false
 		await get_tree().create_timer(1.0).timeout
-		$Head.queue_free()
 		await get_tree().create_timer(9.0).timeout
 		var hole = blackhole.instantiate()
 		hole.position = rand_pos()

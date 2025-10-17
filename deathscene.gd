@@ -10,5 +10,5 @@ func _ready() -> void:
 func _respawn_clicked():
 
 	# Also try this alternative approach
-	get_tree().change_scene_to_file("res://level"+str(Global.currentLevel)+".tscn")
+	get_tree().change_scene_to_file("res://level"+str(int(Global.currentLevel))+".tscn")
 	

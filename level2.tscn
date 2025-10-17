@@ -1,21 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://2imelvicpo2j"]
+[gd_scene load_steps=11 format=3 uid="uid://2imelvicpo2j"]
 
 [ext_resource type="Script" uid="uid://d4brpplkmcxbm" path="res://level_2.gd" id="1_r40rm"]
-[ext_resource type="Script" uid="uid://inr7thcm7nea" path="res://character_2d.gd" id="3_6q4t8"]
-[ext_resource type="Texture2D" uid="uid://c3b2ktv7kb21x" path="res://bars/bar 2.png" id="3_21xmu"]
-[ext_resource type="Texture2D" uid="uid://cfuvp0jbo643k" path="res://track.png" id="4_8tcn8"]
-[ext_resource type="AudioStream" uid="uid://cykbumfll4plp" path="res://bounce.mp3" id="4_21xmu"]
+[ext_resource type="PackedScene" uid="uid://7ygkj8nkl5tr" path="res://character_body_2d.tscn" id="2_21xmu"]
 [ext_resource type="PackedScene" uid="uid://dc67wdhggb0en" path="res://snake_body.tscn" id="6_8i3m3"]
-[ext_resource type="Theme" uid="uid://b7y18yllnp2n1" path="res://maintheme.tres" id="6_rmy57"]
-[ext_resource type="Texture2D" uid="uid://bf4t3rwnivlsw" path="res://tamagotchi/normal.png" id="7_jifot"]
-[ext_resource type="Script" uid="uid://brrwxbgwlhmc5" path="res://hint_label_2.gd" id="8_jifot"]
 [ext_resource type="AudioStream" uid="uid://bfb2e5y1fblk1" path="res://pop.mp3" id="9_3opl0"]
-[ext_resource type="AudioStream" uid="uid://buvk1dyjq10k" path="res://found.wav" id="9_dc5vx"]
-[ext_resource type="Texture2D" uid="uid://b8mtqcnj2hpyo" path="res://chevron.png" id="9_s8oj7"]
 [ext_resource type="PackedScene" uid="uid://8uvdw84n881q" path="res://block2d.tscn" id="12_dc5vx"]
 [ext_resource type="Texture2D" uid="uid://6vpl46pj6ghq" path="res://square3dsmall(1).png" id="14_mw4xc"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_r40rm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r6vdu"]
 
@@ -106,63 +96,8 @@ _data = {
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_r40rm")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
-script = ExtResource("3_6q4t8")
-
-[node name="LengthBar" type="Sprite2D" parent="CharacterBody2D"]
-z_index = 1
-position = Vector2(0, 274)
-texture = ExtResource("3_21xmu")
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-scale = Vector2(4, 4)
-shape = SubResource("CircleShape2D_r40rm")
-one_way_collision_margin = 0.0
-
-[node name="Track" type="Sprite2D" parent="CharacterBody2D"]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("4_8tcn8")
-
-[node name="BouncePlayer" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
-stream = ExtResource("4_21xmu")
-
-[node name="ScoreLabel" type="Label" parent="CharacterBody2D"]
-z_index = 2
-offset_left = -576.0
-offset_top = 224.0
-offset_right = 576.0
-offset_bottom = 268.0
-theme = ExtResource("6_rmy57")
-text = "2"
-horizontal_alignment = 1
-
-[node name="Tamagotchi" type="Sprite2D" parent="CharacterBody2D"]
-z_index = 1
-position = Vector2(-431, 150)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_jifot")
-
-[node name="HintLabel2" type="Label" parent="CharacterBody2D" groups=["player"]]
-z_index = 1
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -536.0
-offset_bottom = -301.0
-theme = ExtResource("6_rmy57")
-text = "Make Snake as short as possible"
-script = ExtResource("8_jifot")
-
-[node name="Chevron" type="Sprite2D" parent="CharacterBody2D"]
-z_index = 1
-position = Vector2(550, -25)
-rotation = -0.25132743
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("9_s8oj7")
-
-[node name="DetectedPlayer" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
-stream = ExtResource("9_dc5vx")
+[node name="CharacterBody2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_21xmu")]
+target = NodePath("../Head")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.6
