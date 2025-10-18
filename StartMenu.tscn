@@ -315,11 +315,9 @@ alignment = 1
 layout_mode = 2
 text = "Play"
 
-[node name="LanguageButton" type="Button" parent="VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_7htnq")
-theme_override_font_sizes/font_size = 32
-text = "Japanese/日本語"
+text = "Settings"
 
 [node name="StartBackground" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
@@ -351,3 +349,18 @@ texture = ExtResource("7_8bi5o")
 offset = Vector2(188, 0)
 region_enabled = true
 region_rect = Rect2(375.5, 0, 240, 116)
+
+[node name="LanguageButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -56.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_7htnq")
+theme_override_font_sizes/font_size = 32
+text = "日本語"

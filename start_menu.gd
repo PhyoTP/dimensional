@@ -1,47 +1,51 @@
 extends Control
-@onready var play_button = $VBoxContainer/PlayButton
-@onready var language_button = $VBoxContainer/LanguageButton
+@onready var buttons= [$VBoxContainer/PlayButton, $VBoxContainer/SettingsButton, $LanguageButton]
 @onready var start_dialogue = preload("res://StartDialogue.tscn")
 @onready var main_theme = preload("res://maintheme.tres")
 @onready var eng_font = preload("res://Retron2000.ttf")
 @onready var jap_font = preload("res://DotGothic16-Regular.ttf")
-var selected_button
+@onready var settings = preload("res://settings.tscn")
+var selected_index = 0
 func _ready():
-	play_button.pressed.connect(play_pressed)
-	language_button.pressed.connect(language_pressed)
+	buttons[0].pressed.connect(play_pressed)
+	buttons[1].pressed.connect(settings_pressed)
+	buttons[2].pressed.connect(language_pressed)
 	if Global.japanese:
-		play_button.text = "プレイ"
 		main_theme.default_font = jap_font
-		language_button.text = "英語/English"
+		buttons[0].text = "プレイ"
+		buttons[1].text = "設定"
+		buttons[2].text = "English"
 	else:
-		play_button.text = "Play"
 		main_theme.default_font = eng_font
-		language_button.text = "Japanese/日本語"
-	set_focused_button(play_button)
-	play_button.connect("mouse_entered", Callable(self, "set_focused_button").bind(play_button))
-	language_button.connect("mouse_entered", Callable(self, "set_focused_button").bind(language_button))
+		buttons[0].text = "Play"
+		buttons[1].text = "Settings"
+		buttons[2].text = "日本語"
+	set_focused_button(0)
+	buttons[0].connect("mouse_entered", Callable(self, "set_focused_button").bind(0))
+	buttons[1].connect("mouse_entered", Callable(self, "set_focused_button").bind(1))
+	buttons[2].connect("mouse_entered", Callable(self, "set_focused_button").bind(2))
 func play_pressed():
 	get_tree().change_scene_to_packed(start_dialogue)
 func language_pressed():
 	Global.japanese = not Global.japanese
 	get_tree().reload_current_scene()
-func set_focused_button(button: Button):
-	if selected_button != button:
+func set_focused_button(index: int):
+	if selected_index != index:
 		var style_normal = StyleBoxFlat.new()
 		style_normal.bg_color = Color8(232,81,18)
-		if selected_button:
-			selected_button.remove_theme_stylebox_override("normal")
-			selected_button.text = selected_button.text.erase(selected_button.text.length()-1)
-		selected_button = button
-		selected_button.add_theme_stylebox_override("normal",style_normal)
-		selected_button.text += ">"
-func _process(_delta: float) -> void:
+		buttons[selected_index].remove_theme_stylebox_override("normal")
+		selected_index = index
+		buttons[selected_index].add_theme_stylebox_override("normal",style_normal)
+func _input(event: InputEvent) -> void:
 	if not $AnimationPlayer.is_playing():
-		if Input.is_action_pressed("ui_down"):
-			set_focused_button(language_button)
-		elif Input.is_action_pressed("ui_up"):
-			set_focused_button(play_button)
-		elif Input.is_action_pressed("ui_accept") or Input.is_action_pressed("ui_right"):
-			play_pressed() if selected_button == play_button else language_pressed()
+		if event.is_action_pressed("ui_down") and event.pressed:
+			set_focused_button((selected_index+1)%len(buttons))
+		elif event.is_action_pressed("ui_up") and event.pressed:
+			set_focused_button((selected_index-1)%len(buttons))
+		elif event.is_action_pressed("ui_accept") or event.is_action_pressed("ui_right"):
+			buttons[selected_index].emit_signal("pressed")
 		
-	
+func settings_pressed():
+	var setting = settings.instantiate()
+	setting.global_position = Vector2(576, 324)
+	add_child(setting)

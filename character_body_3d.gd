@@ -29,8 +29,6 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
-# Sensitivity
-var mouse_sensitivity = 0.005
 
 # Current rotation values
 var yaw = 0.0  # horizontal
@@ -64,11 +62,11 @@ func _process(_delta: float) -> void:
 func _input(event):
 	if event is InputEventMouseMotion and is_controlled:
 		 # Horizontal rotation (yaw)
-		yaw -= event.relative.x * mouse_sensitivity
+		yaw -= event.relative.x * Global.sens
 		rotation.y = yaw
 
 		# Vertical rotation (pitch) — clamp to avoid flipping
-		pitch = clamp(pitch - event.relative.y * mouse_sensitivity, -1.5, 1.5)
+		pitch = clamp(pitch - event.relative.y * Global.sens, -1.5, 1.5)
 		camera.rotation.x = pitch
 	if event is InputEventKey and event.keycode == Key.KEY_ESCAPE and event.pressed:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
