@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b78x13714oket"]
+[gd_scene load_steps=15 format=3 uid="uid://b78x13714oket"]
 
 [ext_resource type="PackedScene" uid="uid://ywoaa20y4cqj" path="res://character_body_3d.tscn" id="1_jwv3a"]
 [ext_resource type="Texture2D" uid="uid://crrxolt4kuj8g" path="res://square3d.png" id="1_xy4tn"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cfy8svc6lc2gv" path="res://2_dconverterreal.tscn" id="3_v8kj3"]
 [ext_resource type="PackedScene" uid="uid://04mqe5fkp75h" path="res://2_denemy.tscn" id="4_i2041"]
 [ext_resource type="PackedScene" uid="uid://gldptvit1t1c" path="res://3dborder.tscn" id="6_crycw"]
+[ext_resource type="Texture2D" uid="uid://dj1x67ipv3amf" path="res://menu.png" id="9_5j5gb"]
 [ext_resource type="Theme" uid="uid://b7y18yllnp2n1" path="res://maintheme.tres" id="9_usj0q"]
 [ext_resource type="Script" uid="uid://drxxtsi20oyio" path="res://hint_label.gd" id="10_5j5gb"]
 
@@ -27,6 +28,9 @@ size = Vector3(60, 1, 60)
 background_mode = 1
 background_color = Color(0.180392, 0.243137, 0.235294, 1)
 ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_usj0q"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Node3D" type="Node3D"]
 
@@ -188,10 +192,53 @@ script = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HintLabel" type="Label" parent="CanvasLayer" groups=["converter", "player"]]
+[node name="Control" type="Control" parent="CanvasLayer" groups=["converter", "player"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("10_5j5gb")
+
+[node name="HintLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 91.0
 theme = ExtResource("9_usj0q")
 text = "
 "
-script = ExtResource("10_5j5gb")
+
+[node name="MenuButton" type="MenuButton" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -208.0
+offset_bottom = 208.0
+grow_horizontal = 0
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(208, 0)
+icon = ExtResource("9_5j5gb")
+item_count = 1
+popup/item_0/text = "aaa"
+popup/item_0/id = 0
+
+[node name="PopupMenu" type="PopupMenu" parent="CanvasLayer/Control/MenuButton"]
+oversampling_override = 1.0
+position = Vector2i(918, 62)
+size = Vector2i(234, 108)
+theme_override_styles/panel = SubResource("StyleBoxFlat_usj0q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MenuButton/PopupMenu"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("9_usj0q")
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/MenuButton/PopupMenu/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+alignment = 2
+
+[node name="Button2" type="Button" parent="CanvasLayer/Control/MenuButton/PopupMenu/VBoxContainer"]
+layout_mode = 2
+text = "Back to Menu"
+alignment = 2
