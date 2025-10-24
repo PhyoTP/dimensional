@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://b7y18yllnp2n1" path="res://maintheme.tres" id="1_x2hje"]
 [ext_resource type="Texture2D" uid="uid://crrxolt4kuj8g" path="res://square3d.png" id="3_3ykye"]
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" groups=["settings"]]
 z_index = 1
 layout_mode = 3
 anchors_preset = 15
@@ -45,6 +45,12 @@ layout_mode = 2
 min_value = 1.0
 max_value = 20.0
 value = 10.0
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back to Menu"
 
 [node name="Square3d" type="Sprite2D" parent="."]
 z_index = -1

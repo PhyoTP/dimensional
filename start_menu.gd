@@ -1,12 +1,17 @@
 extends Control
 @onready var buttons= [$VBoxContainer/PlayButton, $VBoxContainer/SettingsButton, $LanguageButton]
-@onready var start_dialogue = preload("res://StartDialogue.tscn")
+@onready var scenes = {
+	0.0: "res://StartDialogue.tscn",
+	1.0: "res://level1.tscn",
+	2.0: "res://level2.tscn"
+}
 @onready var main_theme = preload("res://maintheme.tres")
 @onready var eng_font = preload("res://Retron2000.ttf")
 @onready var jap_font = preload("res://DotGothic16-Regular.ttf")
 @onready var settings = preload("res://settings.tscn")
 var selected_index = 0
 func _ready():
+	Global.in_menu = true
 	buttons[0].pressed.connect(play_pressed)
 	buttons[1].pressed.connect(settings_pressed)
 	buttons[2].pressed.connect(language_pressed)
@@ -25,7 +30,8 @@ func _ready():
 	buttons[1].connect("mouse_entered", Callable(self, "set_focused_button").bind(1))
 	buttons[2].connect("mouse_entered", Callable(self, "set_focused_button").bind(2))
 func play_pressed():
-	get_tree().change_scene_to_packed(start_dialogue)
+	Global.in_menu = false
+	get_tree().change_scene_to_file(scenes[Global.currentLevel])
 func language_pressed():
 	Global.japanese = not Global.japanese
 	get_tree().reload_current_scene()

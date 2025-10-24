@@ -33,9 +33,12 @@ func _physics_process(delta):
 # Current rotation values
 var yaw = 0.0  # horizontal
 var pitch = 0.0  # vertical
-var is_controlled = false
+var is_controlled = true
 @onready var camera = $Camera3D
 
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)  # locks the mouse
+	Global.currentLevel = 1
 func _process(_delta: float) -> void:
 	if abs(position.y-1.5) <= 0.1:
 		get_tree().call_group("enemy", "player_on_ground")
@@ -57,7 +60,7 @@ func _process(_delta: float) -> void:
 
 		converter.global_position = pos
 		converter.global_rotation.y = 0.0
-func _input(event: InputEvent) -> void:
+func _input(event):
 	if event is InputEventMouseMotion and is_controlled:
 		 # Horizontal rotation (yaw)
 		yaw -= event.relative.x * Global.sens
@@ -66,21 +69,18 @@ func _input(event: InputEvent) -> void:
 		# Vertical rotation (pitch) — clamp to avoid flipping
 		pitch = clamp(pitch - event.relative.y * Global.sens, -1.5, 1.5)
 		camera.rotation.x = pitch
-	if event is InputEventKey and event.keycode == Key.KEY_ESCAPE and event.pressed:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		is_controlled = false
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT:
-			if event.pressed:
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-				is_controlled = true
-			else:
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-				is_controlled = false
-		elif event.button_index == MOUSE_BUTTON_LEFT and converter:
+	if event is InputEventKey and event.pressed:
+		if event.keycode == Key.KEY_ESCAPE or event.keycode == Key.KEY_E:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			is_controlled = false
+		elif event.keycode == Key.KEY_F and is_controlled and converter:
 			get_tree().call_group("converter", "is_placed", converter.global_position)
 			material.albedo_color.a = 1.0
 			converter.queue_free()
+	if event is InputEventMouseButton and get_tree().get_node_count_in_group("settings") == 0 and can_move:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		is_controlled = true
+	
 	
 	
 
