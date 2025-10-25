@@ -74,7 +74,7 @@ func _on_timer_timeout() -> void:
 				snake_list[i], 
 				"position", 
 				snake_coords[i], 
-				0.6
+				0.5
 			)
 
 func _on_head_body_entered(body: Node2D) -> void:

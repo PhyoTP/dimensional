@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://gldptvit1t1c"]
+[gd_scene load_steps=9 format=3 uid="uid://gldptvit1t1c"]
 
 [ext_resource type="Script" uid="uid://dphjupele4vb3" path="res://3_dblock.gd" id="1_mftts"]
 [ext_resource type="Texture2D" uid="uid://swl58s3lqqtn" path="res://squareempty.png" id="2_mftts"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_y0yij"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_mftts"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xurk"]
 transparency = 1
@@ -13,15 +13,58 @@ roughness = 0.5
 uv1_scale = Vector3(30, 30, 30)
 uv1_triplanar = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_mftts"]
+[sub_resource type="BoxMesh" id="BoxMesh_cbc8a"]
 material = SubResource("StandardMaterial3D_3xurk")
+
+[sub_resource type="Animation" id="Animation_ymwss"]
+resource_name = "flow"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:uv1_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nkntt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:uv1_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4i0hh"]
+_data = {
+&"RESET": SubResource("Animation_nkntt"),
+&"flow": SubResource("Animation_ymwss")
+}
 
 [node name="block" type="StaticBody3D" groups=["block"]]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
 script = ExtResource("1_mftts")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_y0yij")
+shape = SubResource("BoxShape3D_mftts")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_mftts")
+mesh = SubResource("BoxMesh_cbc8a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4i0hh")
+}
+autoplay = "flow"

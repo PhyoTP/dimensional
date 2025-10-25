@@ -34,6 +34,10 @@ ambient_light_color = Color(1, 1, 1, 1)
 transform = Transform3D(0.868308, -0.491482, 0.0669873, 0.0669873, 0.25, 0.965926, -0.491481, -0.834234, 0.25, 0, 0, 0)
 shadow_enabled = true
 
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.5062363, 0.84275216, -0.18301259, 0.28723463, 0.36486745, 0.8856456, 0.813155, 0.39577842, -0.4267767, 0, 0, 0)
+shadow_enabled = true
+
 [node name="Floor" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://7ygkj8nkl5tr"]
+[gd_scene load_steps=12 format=3 uid="uid://7ygkj8nkl5tr"]
 
 [ext_resource type="Script" uid="uid://inr7thcm7nea" path="res://character_2d.gd" id="1_6ct3r"]
 [ext_resource type="Texture2D" uid="uid://c3b2ktv7kb21x" path="res://bars/bar 2.png" id="2_1kp85"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cykbumfll4plp" path="res://bounce.mp3" id="4_wyqjk"]
 [ext_resource type="Theme" uid="uid://b7y18yllnp2n1" path="res://maintheme.tres" id="5_k85er"]
 [ext_resource type="Texture2D" uid="uid://bf4t3rwnivlsw" path="res://tamagotchi/normal.png" id="6_ebjds"]
+[ext_resource type="Script" uid="uid://ba103vjnjcrop" path="res://tamagotchi.gd" id="7_1kp85"]
 [ext_resource type="Script" uid="uid://brrwxbgwlhmc5" path="res://hint_label_2.gd" id="7_y1dt5"]
 [ext_resource type="Texture2D" uid="uid://b8mtqcnj2hpyo" path="res://chevron.png" id="8_au0nh"]
 [ext_resource type="AudioStream" uid="uid://buvk1dyjq10k" path="res://found.wav" id="9_76bt2"]
@@ -14,6 +15,9 @@
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_6ct3r")
+speed = null
+x_bounds = null
+y_bounds = null
 
 [node name="LengthBar" type="Sprite2D" parent="."]
 z_index = 1
@@ -49,6 +53,7 @@ z_index = 1
 position = Vector2(-431, 150)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_ebjds")
+script = ExtResource("7_1kp85")
 
 [node name="HintLabel2" type="Label" parent="." groups=["player"]]
 z_index = 1
