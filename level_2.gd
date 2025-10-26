@@ -14,7 +14,7 @@ func _ready() -> void:
 	snake_list = get_tree().get_nodes_in_group("snake")
 	length = len(snake_list)
 	Global.currentLevel = 2
-	snake_list[-1].body_entered.connect(Callable(self, "_on_snake_body_entered").bind(snake_list[-1]))
+	snake_list[-1].body_entered.connect(_on_snake_body_entered.bind(snake_list[-1]))
 	blocks = get_tree().get_nodes_in_group("block")
 	for i in range(8):
 		var newBlock = block.instantiate()

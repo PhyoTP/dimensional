@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdbkpbeqyrxva"]
+
+[ext_resource type="Texture2D" uid="uid://bf4t3rwnivlsw" path="res://tamagotchi/normal.png" id="1_6nppi"]
+[ext_resource type="Script" uid="uid://ba103vjnjcrop" path="res://tamagotchi.gd" id="2_u1cb5"]
+[ext_resource type="Theme" uid="uid://b7y18yllnp2n1" path="res://maintheme.tres" id="3_3glrh"]
+[ext_resource type="Texture2D" uid="uid://cbflgyshlnfrn" path="res://tamagotchi/bouncer.png" id="4_undym"]
+[ext_resource type="Texture2D" uid="uid://bn5bo0a7mm3pg" path="res://tamagotchi/snake.png" id="5_nfk7h"]
+
+[node name="Tamagotchi" type="Sprite2D"]
+z_index = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_6nppi")
+script = ExtResource("2_u1cb5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = -108.0
+offset_top = -108.0
+offset_right = 108.0
+offset_bottom = 108.0
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_3glrh")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Shoot beam"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_3glrh")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "<Q"
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_3glrh")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "F"
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_3glrh")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "E>"
+
+[node name="Bouncer" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_undym")
+region_enabled = true
+region_rect = Rect2(101, 193.5, 216, 113)
+
+[node name="Snake" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_nfk7h")
+region_enabled = true
+region_rect = Rect2(101, 193.5, 216, 113)
