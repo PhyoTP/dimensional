@@ -30,11 +30,11 @@ func _ready() -> void:
 	if Global.japanese:
 		get_parent().get_node("Label2").text = "押す"
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
+	if (event is InputEventMouseButton or event is InputEventKey) and event.pressed:
 		index+=1
-		if index == 3:
-			get_node("../TextureRect").texture = get_node("../SubViewport").get_texture()
 		if index == 4:
+			get_node("../BouncerDocs").visible = true
+		if index == 3:
 			get_node("../Dialogue").texture = details
 		if len(dialogue) <= index:
 			get_tree().change_scene_to_packed(level1)

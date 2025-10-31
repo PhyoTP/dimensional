@@ -61,3 +61,22 @@ visible = false
 texture = ExtResource("5_nfk7h")
 region_enabled = true
 region_rect = Rect2(101, 193.5, 216, 113)
+
+[node name="Detected" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -317.5
+offset_top = -315.0
+offset_right = -101.5
+offset_bottom = -186.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_3glrh")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 96
+text = "!"
+horizontal_alignment = 1

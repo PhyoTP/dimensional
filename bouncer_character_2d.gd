@@ -8,7 +8,6 @@ extends CharacterBody2D
 @export var y_bounds = Vector2(-1460, 1460)
 @onready var track = preload("res://track.png")
 @onready var found = preload("res://found.png")
-var can_shoot = false
 var snake_captured = false
 func _ready() -> void:
 	if Global.currentLevel == 2.5:
@@ -58,34 +57,30 @@ func _physics_process(_delta: float) -> void:
 	else:
 		$Chevron.visible = false
 func _input(event: InputEvent) -> void:
-	if can_shoot and event is InputEventMouseButton and event.pressed:
-		var newBeam = beam.instantiate()
-		newBeam.direction = direction
-		newBeam.position = position
-		add_sibling(newBeam)
-	if event is InputEventKey and event.keycode == KEY_SHIFT:
-		if event.pressed:
-			speed = 300
-			$Track.texture = found
-		else:
-			speed = 200  
-			$Track.texture = track
-func _can_shoot():
-	$Tamagotchi._change_texture("laser")
-	can_shoot = true
-func _cant_shoot():
-	$Tamagotchi._change_texture("normal")
-	can_shoot = false
+	if event is InputEventKey:
+		if event.keycode == KEY_SHIFT:
+			if event.pressed:
+				speed = 300
+				$Track.texture = found
+			else:
+				speed = 200  
+				$Track.texture = track
+				
 func _captured():
 	target = null
-	$Tamagotchi._change_texture("captured")
-	can_shoot = false
+	$Tamagotchi._add_mode("Snake")
 	snake_captured = true
 	await get_tree().create_timer(3.0).timeout
-	$Tamagotchi._change_texture("detected")
+	$Tamagotchi._set_mode("Detected")
 	$DetectedPlayer.play()
 	await get_tree().create_timer(7.0).timeout
 	target = get_tree().get_first_node_in_group("hole")
 	
-	
+func _replicator(action: String):
+	print(action)
+	if action == "Shoot beam":
+		var newBeam = beam.instantiate()
+		newBeam.direction = direction
+		newBeam.position = position
+		add_sibling(newBeam)
 	

@@ -26,9 +26,8 @@ func _ready():
 		buttons[1].text = "Settings"
 		buttons[2].text = "日本語"
 	set_focused_button(0)
-	buttons[0].connect("mouse_entered", Callable(self, "set_focused_button").bind(0))
-	buttons[1].connect("mouse_entered", Callable(self, "set_focused_button").bind(1))
-	buttons[2].connect("mouse_entered", Callable(self, "set_focused_button").bind(2))
+	for i in range(buttons.size()):
+		buttons[i].mouse_entered.connect(set_focused_button.bind(i))
 func play_pressed():
 	Global.in_menu = false
 	get_tree().change_scene_to_file(scenes[Global.currentLevel])

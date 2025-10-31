@@ -96,8 +96,6 @@ func _on_snake_body_entered(body: Node2D, sender: Node2D) -> void:
 			length = index
 			$CharacterBody2D/ScoreLabel.text = str(length)
 			$CharacterBody2D/LengthBar.texture = load("res://bars/bar "+str(length)+".png")
-			if length == 1:
-				get_tree().call_group("player", "_can_shoot")
 
 func rand_pos() -> Vector2:
 	var none = (snake_list + blocks).map(func(i): if is_instance_valid(i): return i.position)
@@ -112,6 +110,15 @@ func _on_head_area_entered(area: Area2D) -> void:
 		$Timer.stop()
 		$Head/AnimationPlayer.current_animation = "capture"
 		can_kill = false
+		for i in snake_list:
+			i.queue_free()
+			var newBlock = block.instantiate()
+			newBlock.position = rand_pos()
+			add_child(newBlock)
+		snake_list = []
+		length = 0
+		$CharacterBody2D/ScoreLabel.text = str(length)
+		$CharacterBody2D/LengthBar.texture = load("res://bars/bar "+str(length)+".png")
 		await get_tree().create_timer(1.0).timeout
 		await get_tree().create_timer(9.0).timeout
 		var hole = blackhole.instantiate()

@@ -1,7 +1,10 @@
 extends Label
 func _ready() -> void:
 	if Global.currentLevel == 2:
-		_cant_shoot()
+		if Global.japanese:
+			text = "複写機を使ってスネークを捕まえる"
+		else:
+			text = "Capture Snake using the Entity Replicator"
 	elif Global.currentLevel == 2.5:
 		text = "Hello agent, can you hear me?"
 		await get_tree().create_timer(3.0).timeout
@@ -28,16 +31,6 @@ func _ready() -> void:
 		text = "Find the branch of the DVA in that dimension,"
 		await get_tree().create_timer(3.0).timeout
 		text = "and they'll tell you what to do."
-func _can_shoot():
-	if Global.japanese:
-		text = "押して撃って捕まえる"
-	else:
-		text = "Click to shoot to capture"
-func _cant_shoot():
-	if Global.japanese:
-		text = "スネークを短くする"
-	else: 
-		text = "Make Snake as short as possible"
 func _captured():
 	if Global.japanese:
 		text = "「よかった、HQにかえります」"

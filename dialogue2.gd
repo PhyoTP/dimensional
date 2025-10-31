@@ -35,7 +35,7 @@ func _ready() -> void:
 	if Global.japanese:
 		get_parent().get_node("Label2").text = "押す"
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
+	if (event is InputEventMouseButton or event is InputEventKey) and event.pressed:
 		index+=1
 		if index == 1:
 			get_node("../Tamagotchib").visible = true

@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://brjokohqso3is"]
+[gd_scene load_steps=10 format=3 uid="uid://brjokohqso3is"]
 
 [ext_resource type="Theme" uid="uid://b7y18yllnp2n1" path="res://maintheme.tres" id="1_mufgd"]
 [ext_resource type="Texture2D" uid="uid://ohnjquui8por" path="res://Dialogue.png" id="2_3msof"]
 [ext_resource type="Script" uid="uid://ff6ie0kt747e" path="res://startdialogue.gd" id="2_v8nph"]
 [ext_resource type="Texture2D" uid="uid://cfuvp0jbo643k" path="res://track.png" id="4_40kww"]
+[ext_resource type="Texture2D" uid="uid://b20pxevnnkos5" path="res://dimensionalicon.svg" id="5_kw0bm"]
+[ext_resource type="FontFile" uid="uid://bpv3xb5ahngea" path="res://DotGothic16-Regular.ttf" id="6_8bgfh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v38iq"]
 albedo_texture = ExtResource("4_40kww")
@@ -14,6 +16,9 @@ uv1_scale = Vector3(2, 2, 2)
 [sub_resource type="CylinderMesh" id="CylinderMesh_22imr"]
 material = SubResource("StandardMaterial3D_v38iq")
 height = 0.001
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_40kww"]
+viewport_path = NodePath("SubViewport")
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -57,24 +62,13 @@ grow_vertical = 0
 text = "Click to continue"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -256.0
-offset_top = -512.0
-offset_right = 256.0
-grow_horizontal = 2
-grow_vertical = 0
-
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
+size = Vector2i(64, 64)
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.50000024, 0.8660253, 0, -0.8660253, 0.50000024, 0, -0.033737183, 0.3637458)
+fov = 25.8
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.202, -1)
@@ -84,3 +78,87 @@ skeleton = NodePath("")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport"]
 transform = Transform3D(0.868308, -0.491482, 0.0669873, 0.0669873, 0.25, 0.965926, -0.491481, -0.834234, 0.25, 0, 0, 0)
 shadow_enabled = true
+
+[node name="BouncerDocs" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -148.5
+offset_right = 105.0
+offset_bottom = 148.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BouncerDocs"]
+layout_mode = 1
+offset_left = 3.0517578e-05
+offset_right = 210.00003
+offset_bottom = 205.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BouncerDocs/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="Label" type="Label" parent="BouncerDocs/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Bouncer"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="BouncerDocs/VBoxContainer/HBoxContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_vertical = 0
+texture = SubResource("ViewportTexture_40kww")
+
+[node name="Label2" type="Label" parent="BouncerDocs/VBoxContainer"]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "- Threat level: 2/5
+- Entity type: 2D
+- Origin: Bouncerland
+- Abilities: Detect targets through echolocation, speeds up when pursuing
+- Mode of capture: Entity Crammer"
+autowrap_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="BouncerDocs/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 26
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BouncerDocs/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BouncerDocs/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("5_kw0bm")
+expand_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BouncerDocs/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BouncerDocs/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Dimension Variance Authority"
+
+[node name="Label2" type="Label" parent="BouncerDocs/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_8bgfh")
+theme_override_font_sizes/font_size = 8
+text = "Securitate Axes"

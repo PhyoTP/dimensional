@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://2imelvicpo2j"]
 
 [ext_resource type="Script" uid="uid://d4brpplkmcxbm" path="res://level_2.gd" id="1_r40rm"]
-[ext_resource type="PackedScene" uid="uid://7ygkj8nkl5tr" path="res://character_body_2d.tscn" id="2_21xmu"]
+[ext_resource type="PackedScene" uid="uid://7ygkj8nkl5tr" path="res://bouncer_character_2d.tscn" id="2_21xmu"]
 [ext_resource type="PackedScene" uid="uid://dc67wdhggb0en" path="res://snake_body.tscn" id="6_8i3m3"]
 [ext_resource type="AudioStream" uid="uid://bfb2e5y1fblk1" path="res://pop.mp3" id="9_3opl0"]
 [ext_resource type="PackedScene" uid="uid://8uvdw84n881q" path="res://block2d.tscn" id="12_dc5vx"]
@@ -97,10 +97,7 @@ _data = {
 script = ExtResource("1_r40rm")
 
 [node name="CharacterBody2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_21xmu")]
-speed = 200.0
 target = NodePath("../Head")
-x_bounds = Vector2(2360, -560)
-y_bounds = Vector2(-1460, 1460)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
