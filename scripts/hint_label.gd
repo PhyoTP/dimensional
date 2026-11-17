@@ -1,14 +1,14 @@
 extends Control
 @onready var settings = preload("res://scenes/settings.tscn")
 @onready var crammer = $crammer
-func _ready() -> void:
-	if Global.language == 1:
-		$Label.text = "E: メニュー"
+@onready var label = $MenuLabel
 
 func get_two_converter():
 	crammer.visible = true
 func is_placed(_coords: Vector3):
 	crammer.visible = false
+func entity_captured():
+	label.visible = false
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.keycode == Key.KEY_E and event.pressed:
 		var setting = settings.instantiate()

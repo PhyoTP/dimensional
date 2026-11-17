@@ -1,5 +1,6 @@
 extends Node
 
+const LANGUAGES = ["en","ja"]
 var language: int = 0
 var currentLevel: float = 0
 var sens = 0.005

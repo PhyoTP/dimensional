@@ -4,9 +4,6 @@ var placed = false
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	area_entered.connect(_on_area_entered)
-	if Global.language == 1:
-		$CanvasLayer/Label.text = "化け物を捕まえた！"
-		$CanvasLayer/VBoxContainer/NextButton.text = "本部に帰る"
 	$CanvasLayer/VBoxContainer/NextButton.pressed.connect(next_scene)
 @onready var next = preload("res://scenes/dialogue2.tscn")
 func _process(_delta: float) -> void:

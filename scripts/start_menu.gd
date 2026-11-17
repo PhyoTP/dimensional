@@ -16,16 +16,6 @@ func _ready():
 	buttons[0].pressed.connect(play_pressed)
 	buttons[1].pressed.connect(settings_pressed)
 	buttons[2].pressed.connect(language_pressed)
-	if Global.language == 1:
-		main_theme.default_font = jap_font
-		buttons[0].text = "プレイ"
-		buttons[1].text = "設定"
-		buttons[2].text = "English"
-	else:
-		main_theme.default_font = eng_font
-		buttons[0].text = "Play"
-		buttons[1].text = "Settings"
-		buttons[2].text = "日本語"
 	set_focused_button(0)
 	for i in range(buttons.size()):
 		buttons[i].mouse_entered.connect(set_focused_button.bind(i))
@@ -36,7 +26,13 @@ func play_pressed():
 	get_tree().change_scene_to_file(scenes[Global.currentLevel])
 func language_pressed():
 	Global.language = abs(Global.language - 1)
-	get_tree().reload_current_scene()
+	TranslationServer.set_locale(Global.LANGUAGES[Global.language])
+	if Global.language == 1:
+		main_theme.default_font = jap_font
+		buttons[2].text = "English"
+	else:
+		main_theme.default_font = eng_font
+		buttons[2].text = "日本語"
 func set_focused_button(index: int):
 	if selected_index != index:
 		var style_normal = StyleBoxFlat.new()

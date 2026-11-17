@@ -70,6 +70,10 @@ ui_down={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://translations.en.translation", "res://translations.ja.translation")
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

@@ -29,7 +29,7 @@ func _on_body_entered(body: Node3D):
 		speed = 5
 	if body.is_in_group("player"):
 		print("dead")
-		get_tree().change_scene_to_packed(death)
+		get_tree().change_scene_to_packed.call_deferred(death)
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 func _on_area_entered(area: Node3D):
 	if area.is_in_group("converter"):
@@ -41,7 +41,7 @@ func _on_area_entered(area: Node3D):
 		var ratio = dist/36
 		direction = Vector3(diff.x*ratio, diff.y*ratio, diff.z*ratio)
 		$AnimationPlayer.current_animation = "caught"
-		$AnimationPlayer.animation_finished.connect(queue_free)
+		#$AnimationPlayer.animation_finished.connect(queue_free)
 func player_on_ground():
 	if not caught:
 		var player = get_tree().get_nodes_in_group("player")[0]

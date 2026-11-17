@@ -20,4 +20,4 @@ func block_entered(block: Node2D):
 func player_entered(player: Node2D):
 	if player in get_tree().get_nodes_in_group("player"):
 		Global.currentLevel = 2.5
-		get_tree().change_scene_to_packed(level)
+		get_tree().change_scene_to_packed.call_deferred(level)

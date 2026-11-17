@@ -46,7 +46,7 @@ shader_parameter/distort_intensity = 0.02000000095
 shader_parameter/noise_opacity = 0.2000000095
 shader_parameter/noise_speed = 5.0
 shader_parameter/static_noise_intensity = 0.06
-shader_parameter/aberration = 0.010000047974999982
+shader_parameter/aberration = 0.01000004797499998
 shader_parameter/brightness = 1.4
 shader_parameter/discolor = false
 shader_parameter/warp_amount = 0.10000000475
@@ -241,7 +241,7 @@ offset_right = 1152.0
 offset_bottom = 648.0
 script = ExtResource("10_5j5gb")
 
-[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=537378938]
+[node name="MenuLabel" type="Label" parent="CanvasLayer/Control" unique_id=537378938]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0

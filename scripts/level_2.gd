@@ -49,7 +49,7 @@ func _on_timer_timeout() -> void:
 	if snake_list[0].overlaps_area(min_block):
 		length += 1
 		if length > 10:
-			get_tree().change_scene_to_packed(lose)
+			get_tree().change_scene_to_packed.call_deferred(lose)
 			return
 		min_block.queue_free()
 		$CharacterBody2D/ScoreLabel.text = str(length)
@@ -79,7 +79,7 @@ func _on_timer_timeout() -> void:
 
 func _on_head_body_entered(body: Node2D) -> void:
 	if body in get_tree().get_nodes_in_group("player") and can_kill == true:
-		get_tree().change_scene_to_packed(death)
+		get_tree().change_scene_to_packed.call_deferred(death)
 	
 
 func _on_snake_body_entered(body: Node2D, sender: Node2D) -> void:
@@ -114,7 +114,7 @@ func _on_head_area_entered(area: Area2D) -> void:
 			i.queue_free()
 			var newBlock = block.instantiate()
 			newBlock.position = rand_pos()
-			add_child(newBlock)
+			add_child.call_deferred(newBlock)
 		snake_list = []
 		length = 0
 		$CharacterBody2D/ScoreLabel.text = str(length)

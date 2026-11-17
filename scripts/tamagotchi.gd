@@ -18,7 +18,7 @@ func _set_mode(mode: String):
 	$Bouncer.visible = mode == "Bouncer"
 	$Snake.visible = mode == "Snake"
 	$Detected.visible = mode == "Detected"
-	label.text = mode
+	label.text = tr(mode)
 func _add_mode(mode: String):
 	Global.modes.append(mode)
 	_set_mode(mode)

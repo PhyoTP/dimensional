@@ -3,11 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://bjoqkf0swpvaf" path="res://scenes/deathscene.tscn" id="1_vg5ke"]
 [ext_resource type="Script" uid="uid://dm0t2m08j7g4r" path="res://scripts/losescene.gd" id="2_ntsmq"]
 
-[node name="Control" instance=ExtResource("1_vg5ke")]
+[node name="Control" unique_id=1003556232 instance=ExtResource("1_vg5ke")]
 script = ExtResource("2_ntsmq")
 
-[node name="Label" parent="." index="0"]
+[node name="Label" parent="." index="0" unique_id=1557185131]
 text = "Mission Failed"
 
-[node name="RespawnButton" parent="VBoxContainer" index="0"]
+[node name="RespawnButton" parent="VBoxContainer" parent_id_path=PackedInt32Array(476881256) index="0" unique_id=456199672]
 text = "Retry"

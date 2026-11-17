@@ -1,0 +1,41 @@
+keys,en,ja
+Play,Play,プレイ
+Settings,Settings,設定
+Entity Captured!,Entity Captured!,化け物を捕まえた！
+Return to HQ,Return to HQ,本部に帰る
+You died!,You died!,死んだ！
+Restart,Restart,リスタート
+Click to continue,Click to continue,押す
+E: Menu,E: Menu,E: メニュー
+Mission Failed,Mission Failed,失敗
+Retry,Retry,リスタート
+Respawn,Respawn,リスタート
+Sensitivity,Sensitivity,感度
+Bouncer,Bouncer,バウンサー
+Snake,Snake,スネーク
+Detected,Detected,検出する
+Shoot beam,Shoot beam,ビームを撃つ
+Back to Menu,Back to Menu,メニューに帰る
+Make Snake as short as possible,Make Snake as short as possible,スネクーをできるだけ短くする
+
+
+DIALOGUE_1-1,"Welcome agent, to the Dimension Variance Authority.",エーイジェント、「DVA」へようこそ。
+DIALOGUE_1-2,What you are about to hear is highly classified.,この情報は極秘です。
+DIALOGUE_1-3,"Here at the DVA, we capture entities that have escaped their home dimensions and wreck havoc on others.",「DVA」に、次元から現れる化け物を捕まえます。
+DIALOGUE_1-4,Your first mission is to capture Bouncer.,最初の任務は、「バウンサー」を捕まえることです。
+DIALOGUE_1-5,Bouncer is a 2D entity that relies on movement to eliminate its targets.,バウンサーは二次元の化け物です、動きを頼って敵を消します。
+DIALOGUE_1-6,"Normal, 3 dimensional weapons dont work on Bouncer, but coming into contact with it is deadly.",普通の武器はバウンサーに通用しませんが、遭遇すれば致命的です。
+DIALOGUE_1-7,"Hence, it is imperative that you apprehend it using the 2 Dimensional Entity Crammer.",これから、「二次元化け物クラマー」を使って捕まえなくてはいけません。
+DIALOGUE_1-8,Simply place the crammer and lure Bouncer into it.,「クラマー」を設置し、誘い込みます。
+DIALOGUE_1-9,Good luck agent.,健闘を祈ります。
+
+DIALOGUE_2-1,"Good job agent, you successfully completed your first mission.",よくやった、最初の任務をしまいました。
+DIALOGUE_2-2,You've earned yourself an Entity Replicator.,「化け物複写機」をもらいます。
+DIALOGUE_2-3,An Entity Replicator allows you to turn into the entities that you capture and gain their abilities.,化け物複写機は捕まえた化け物になることの能力がくれます。
+DIALOGUE_2-4,"For starters, we've added Bouncer into yours.",私達はあなたの複写機にバウンサーを入れました。
+DIALOGUE_2-5,Your next mission is in the 2nd Dimension.,次の任務は二次元の世界にあります。
+DIALOGUE_2-6,"There is a 1 dimensional entity called Snake, which gained the ability to turn and is consuming everything.",「スネーク」という一次元の化け物がある、曲がれるようになった、すべてを食べています。
+DIALOGUE_2-7,"If things get out of hand, it could be disastrous.",このままでは、取り返しのつかないことになるかもしれない。
+DIALOGUE_2-8,Use your Replicator to turn into Bouncer and neutralise it.,複写機を使ってバウンサーになる、スネークを無力化します。
+DIALOGUE_2-9,"Bouncer can destroy the body of Snake, but the head is much stronger and can eliminate Bouncer.",バウンサーはスネークの胴体を壊せますが、スネークの頭はバウンサーを壊せます。
+DIALOGUE_2-10,Press F to start the mission.,「F」を押して任務を始めます。
