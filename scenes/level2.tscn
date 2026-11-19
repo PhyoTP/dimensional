@@ -97,10 +97,7 @@ _data = {
 script = ExtResource("1_r40rm")
 
 [node name="CharacterBody2D" parent="." unique_id=2076833158 node_paths=PackedStringArray("target") instance=ExtResource("2_21xmu")]
-speed = 200.0
 target = NodePath("../Head")
-x_bounds = Vector2(2360, -560)
-y_bounds = Vector2(-1460, 1460)
 
 [node name="Timer" type="Timer" parent="." unique_id=1943193188]
 wait_time = 0.5

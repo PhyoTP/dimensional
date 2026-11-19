@@ -17,9 +17,10 @@ Detected,Detected,検出する
 Shoot beam,Shoot beam,ビームを撃つ
 Back to Menu,Back to Menu,メニューに帰る
 Make Snake as short as possible,Make Snake as short as possible,スネクーをできるだけ短くする
+Reset, Reset, リセット
 
 
-DIALOGUE_1-1,"Welcome agent, to the Dimension Variance Authority.",エーイジェント、「DVA」へようこそ。
+DIALOGUE_1-1,"Welcome agent, to the Dimension Variance Authority.",エーイジェント、「DVA」という次元変異取締局へようこそ。
 DIALOGUE_1-2,What you are about to hear is highly classified.,この情報は極秘です。
 DIALOGUE_1-3,"Here at the DVA, we capture entities that have escaped their home dimensions and wreck havoc on others.",「DVA」に、次元から現れる化け物を捕まえます。
 DIALOGUE_1-4,Your first mission is to capture Bouncer.,最初の任務は、「バウンサー」を捕まえることです。
@@ -39,3 +40,10 @@ DIALOGUE_2-7,"If things get out of hand, it could be disastrous.",このまま�
 DIALOGUE_2-8,Use your Replicator to turn into Bouncer and neutralise it.,複写機を使ってバウンサーになる、スネークを無力化します。
 DIALOGUE_2-9,"Bouncer can destroy the body of Snake, but the head is much stronger and can eliminate Bouncer.",バウンサーはスネークの胴体を壊せますが、スネークの頭はバウンサーを壊せます。
 DIALOGUE_2-10,Press F to start the mission.,「F」を押して任務を始めます。
+
+dialogue_2a-1,"Good job agent, now return to HQ.",「よかった、HQにかえります」
+dialogue_2a-2,"Hold on, I think there's another entity here.",「ちょっと待って、別の化け物があるみたいです。」
+dialogue_2a-3,"It's a black hole, it's impossible to escape, you'll have to go in!",「ブラックホール？逃げられない、入らせます！」
+
+
+BouncerDocs,"- Threat level: 2/5\n- Entity type: 2D\n- Origin: Bouncerland\n- Abilities: Detect targets through echolocation, speeds up when pursuing\n- Mode of capture: Entity Crammer", "- 脅威レベル: 2/5\n- 化け物種類: 二次元\n- 元: バウンサーランド\n- 能力: 反響定位で敵を検出する, 追う時に加速する\n- 捕まえ方: 二次元化け物クラマー"

@@ -7,6 +7,7 @@ var two_converter = preload("res://scenes/2dconverter.tscn")
 var converter = null
 var material = preload("res://2dconverter.tres")
 var can_move = true
+var was_on_floor = true
 func _physics_process(delta):
 	# Apply gravity
 	if not is_on_floor():
@@ -16,7 +17,11 @@ func _physics_process(delta):
 	# Jump
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		$JumpPlayer.play(0.1)
+	if is_on_floor() and not was_on_floor:
+		$LandingPlayer.play(0.3)
 
+	was_on_floor = is_on_floor()
 	# Movement (WASD / arrow keys)
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -26,7 +31,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+	
 	move_and_slide()
 	
 

@@ -16,16 +16,20 @@ func _ready():
 	buttons[0].pressed.connect(play_pressed)
 	buttons[1].pressed.connect(settings_pressed)
 	buttons[2].pressed.connect(language_pressed)
+	update_language()
 	set_focused_button(0)
 	for i in range(buttons.size()):
 		buttons[i].mouse_entered.connect(set_focused_button.bind(i))
 func play_pressed():
 	Global.in_menu = false
 	vhs.material.set_shader_parameter("static_noise_intensity", 1.0)
+	vhs.z_index = 1
 	await get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file(scenes[Global.currentLevel])
 func language_pressed():
 	Global.language = abs(Global.language - 1)
+	update_language()
+func update_language():
 	TranslationServer.set_locale(Global.LANGUAGES[Global.language])
 	if Global.language == 1:
 		main_theme.default_font = jap_font

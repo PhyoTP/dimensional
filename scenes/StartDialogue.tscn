@@ -27,6 +27,7 @@ grow_vertical = 2
 theme = ExtResource("1_mufgd")
 
 [node name="Label" type="Label" parent="." unique_id=1010897692]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -124,11 +125,7 @@ custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
-text = "- Threat level: 2/5
-- Entity type: 2D
-- Origin: Bouncerland
-- Abilities: Detect targets through echolocation, speeds up when pursuing
-- Mode of capture: Entity Crammer"
+text = "BouncerDocs"
 autowrap_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="BouncerDocs/VBoxContainer" unique_id=2115931687]

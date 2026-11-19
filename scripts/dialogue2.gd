@@ -15,6 +15,6 @@ func _input(event: InputEvent) -> void:
 			get_tree().change_scene_to_packed(level2)
 		text = ""
 func _process(_delta: float) -> void:
-	var current_line = tr("DIALOGUE_2-"+str(index))
+	var current_line = tr("DIALOGUE_2-%d" % index)
 	if text != current_line:
 		text+=current_line[len(text)]

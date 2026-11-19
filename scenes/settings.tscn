@@ -46,8 +46,17 @@ min_value = 1.0
 max_value = 20.0
 value = 10.0
 
-[node name="BackButton" type="Button" parent="VBoxContainer" unique_id=1604788457]
-visible = false
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1042900150]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="ResetButton" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=107708088]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Reset"
+
+[node name="BackButton" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=1604788457]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Back to Menu"

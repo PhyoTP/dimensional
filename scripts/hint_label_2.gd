@@ -31,19 +31,5 @@ func _ready() -> void:
 		text = "Find the branch of the DVA in that dimension,"
 		await get_tree().create_timer(3.0).timeout
 		text = "and they'll tell you what to do."
-func _captured():
-	if Global.language == 1:
-		text = "「よかった、HQにかえります」"
-	else:
-		text = "\"Good job agent, now return to HQ.\""
-	await get_tree().create_timer(5.0).timeout
-	if Global.language == 1:
-		text = "「ちょっと待って、別の化け物があるみたいです。」"
-	else:
-		text = "\"Hold on, I think there's another entity here.\""
-	await get_tree().create_timer(5.0).timeout
-	if Global.language == 1:
-		text = "ブラックホール？逃げられない、入らせます！"
-	else:
-		text = "\"It's a black hole, it's impossible to escape, you'll have to go in!\""
+
 	

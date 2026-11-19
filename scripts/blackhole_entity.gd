@@ -11,7 +11,7 @@ func  _process(_delta: float) -> void:
 			var length = sqrt(diff.x**2 + diff.y**2)
 			i.position += diff * scale.x / length
 	var player = get_tree().get_first_node_in_group("player")
-	player.get_node("LengthBar").texture = load("res://bars/bar "+str(int(scale.x))+".png")
+	player.get_node("LengthBar").texture = load("res://bars/bar %d.png" % int(scale.x))
 	player.get_tree().get_first_node_in_group("player").get_node("ScoreLabel").text = str(int(scale.x))
 func block_entered(block: Node2D):
 	var tween = create_tween()	

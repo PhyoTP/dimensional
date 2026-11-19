@@ -4,8 +4,8 @@ extends CharacterBody2D
 @export var direction = Vector2.RIGHT.rotated(randf()*TAU)
 @onready var beam = preload("res://scenes/beam.tscn")
 @export var target: Node2D
-@export var x_bounds = Vector2(2360, -560)
-@export var y_bounds = Vector2(-1460, 1460)
+@export var x_bounds := Vector2(2360, -560)
+@export var y_bounds := Vector2(-1460, 1460)
 @onready var track = preload("res://track.png")
 @onready var found = preload("res://found.png")
 var snake_captured = false

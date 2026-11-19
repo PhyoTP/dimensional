@@ -16,6 +16,6 @@ func _input(event: InputEvent) -> void:
 		else:
 			text = ""
 func _process(_delta: float) -> void:
-	var current_line = tr("DIALOGUE_1-"+str(index))
+	var current_line = tr("DIALOGUE_1-%d" % index)
 	if text != current_line:
 		text+=current_line[len(text)]

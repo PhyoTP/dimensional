@@ -279,3 +279,10 @@ theme = ExtResource("9_usj0q")
 theme_override_styles/normal = SubResource("StyleBoxFlat_usj0q")
 text = "F"
 horizontal_alignment = 1
+
+[node name="MissionLabel" type="Label" parent="CanvasLayer/Control" unique_id=1043731826]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("9_usj0q")
+text = "Collect the Entity Crammer"

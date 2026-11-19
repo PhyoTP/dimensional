@@ -5,5 +5,5 @@ extends Control
 func _ready() -> void:
 	retry.pressed.connect(_retry_clicked)
 func _retry_clicked():
-	get_tree().change_scene_to_file("res://scenes/level"+str(int(Global.currentLevel))+".tscn")
+	get_tree().change_scene_to_file("res://scenes/level%d.tscn" % int(Global.currentLevel))
 	

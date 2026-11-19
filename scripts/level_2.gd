@@ -21,6 +21,14 @@ func _ready() -> void:
 		newBlock.position = rand_pos()
 		add_child(newBlock)
 	blocks = get_tree().get_nodes_in_group("block")
+	
+func set_length(value: int):
+	length = value
+	if length > 10:
+		get_tree().change_scene_to_packed.call_deferred(lose)
+		return
+	$CharacterBody2D/ScoreLabel.text = str(length)
+	$CharacterBody2D/LengthBar.texture = load("res://bars/bar %d.png" % length)
 func _on_timer_timeout() -> void:
 	blocks = get_tree().get_nodes_in_group("block")
 	var block_diffs = blocks.map(func(i): return i.position - snake_list[0].position)
@@ -47,17 +55,10 @@ func _on_timer_timeout() -> void:
 	var snake_coords = snake_list.map(func(i): return i.position)
 	snake_coords.insert(0, snake_coords[0] + direction)
 	if snake_list[0].overlaps_area(min_block):
-		length += 1
-		if length > 10:
-			get_tree().change_scene_to_packed.call_deferred(lose)
-			return
+		set_length(length+1)
 		min_block.queue_free()
-		$CharacterBody2D/ScoreLabel.text = str(length)
-		$CharacterBody2D/LengthBar.texture = load("res://bars/bar "+str(length)+".png")
 		$Head/PopPlayer.play()
 	snake_coords = snake_coords.slice(0,length)
-	if length > 1:
-		get_tree().call_group("player", "_cant_shoot")
 	var tween = create_tween().set_parallel(true)
 
 	for i in range(length):
@@ -90,12 +91,10 @@ func _on_snake_body_entered(body: Node2D, sender: Node2D) -> void:
 			i.queue_free()
 			var newBlock = block.instantiate()
 			newBlock.position = rand_pos()
-			add_child(newBlock)
+			add_child.call_deferred(newBlock)
 		snake_list = snake_list.slice(0, index)
 		if index != -1:
-			length = index
-			$CharacterBody2D/ScoreLabel.text = str(length)
-			$CharacterBody2D/LengthBar.texture = load("res://bars/bar "+str(length)+".png")
+			set_length(index)
 
 func rand_pos() -> Vector2:
 	var none = (snake_list + blocks).map(func(i): if is_instance_valid(i): return i.position)
@@ -106,22 +105,23 @@ func rand_pos() -> Vector2:
 		return pos
 func _on_head_area_entered(area: Area2D) -> void:
 	if area in get_tree().get_nodes_in_group("beam"):
-		get_tree().call_group("player", "_captured")
-		$Timer.stop()
-		$Head/AnimationPlayer.current_animation = "capture"
-		can_kill = false
-		for i in snake_list:
-			i.queue_free()
-			var newBlock = block.instantiate()
-			newBlock.position = rand_pos()
-			add_child.call_deferred(newBlock)
-		snake_list = []
-		length = 0
-		$CharacterBody2D/ScoreLabel.text = str(length)
-		$CharacterBody2D/LengthBar.texture = load("res://bars/bar "+str(length)+".png")
-		await get_tree().create_timer(1.0).timeout
-		await get_tree().create_timer(9.0).timeout
-		var hole = blackhole.instantiate()
-		hole.position = rand_pos()
-		add_child(hole)
+		if length == 1:
+			get_tree().call_group("player", "_captured")
+			$Timer.stop()
+			$Head/AnimationPlayer.current_animation = "capture"
+			can_kill = false
+			for i in snake_list:
+				i.queue_free()
+				var newBlock = block.instantiate()
+				newBlock.position = rand_pos()
+				add_child.call_deferred(newBlock)
+			snake_list = []
+			set_length(0)
+			await get_tree().create_timer(1.0).timeout
+			await get_tree().create_timer(9.0).timeout
+			var hole = blackhole.instantiate()
+			hole.position = rand_pos()
+			add_child(hole)
+		#else:
+			
 		
