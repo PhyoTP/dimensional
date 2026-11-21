@@ -49,16 +49,6 @@ horizontal_alignment = 1
 [node name="Tamagotchi" parent="." unique_id=1771916743 instance=ExtResource("6_hcrdk")]
 position = Vector2(-431, 150)
 
-[node name="HintLabel2" type="Label" parent="." unique_id=1996898278]
-z_index = 1
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -536.0
-offset_bottom = -301.0
-theme = ExtResource("5_hkxlw")
-text = "Make Snake as short as possible"
-script = ExtResource("7_rk126")
-
 [node name="Chevron" type="Sprite2D" parent="." unique_id=92511485]
 z_index = 1
 position = Vector2(550, -25)
@@ -104,3 +94,32 @@ grow_vertical = 0
 theme = ExtResource("5_hkxlw")
 horizontal_alignment = 2
 autowrap_mode = 2
+
+[node name="Control" type="Control" parent="." unique_id=1466904621]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+
+[node name="HintLabel" type="Label" parent="Control" unique_id=632658842]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -576.0
+offset_bottom = 44.0
+grow_horizontal = 0
+theme = ExtResource("5_hkxlw")
+text = "Shift: Speed up"
+horizontal_alignment = 2
+
+[node name="HintLabel2" type="Label" parent="Control" unique_id=1996898278]
+z_index = 1
+layout_mode = 1
+offset_right = 576.0
+offset_bottom = 44.0
+theme = ExtResource("5_hkxlw")
+text = "Make Snake as short as possible"
+script = ExtResource("7_rk126")

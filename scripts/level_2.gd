@@ -16,7 +16,7 @@ func _ready() -> void:
 	Global.currentLevel = 2
 	snake_list[-1].body_entered.connect(_on_snake_body_entered.bind(snake_list[-1]))
 	blocks = get_tree().get_nodes_in_group("block")
-	for i in range(8):
+	for i in range(18):
 		var newBlock = block.instantiate()
 		newBlock.position = rand_pos()
 		add_child(newBlock)
@@ -63,14 +63,12 @@ func _on_timer_timeout() -> void:
 
 	for i in range(length):
 		if i >= snake_list.size():
-			# Instantiate and add a new body segment if needed
 			var new_body = snake_body.instantiate()
 			new_body.position = snake_coords[i]
 			new_body.body_entered.connect(_on_snake_body_entered.bind(new_body))
 			snake_list.append(new_body)
 			add_child(new_body)
 		else:
-			# Smoothly move existing segments toward new positions
 			tween.tween_property(
 				snake_list[i], 
 				"position", 
@@ -98,7 +96,7 @@ func _on_snake_body_entered(body: Node2D, sender: Node2D) -> void:
 
 func rand_pos() -> Vector2:
 	var none = (snake_list + blocks).map(func(i): if is_instance_valid(i): return i.position)
-	var pos = Vector2(1850-randi_range(0, 18)*100,950-randi_range(0,18)*100)
+	var pos = Vector2(range(-450, 2350, 100).pick_random(), range(-1350, 1450, 100).pick_random())
 	if pos in none:
 		return rand_pos()
 	else:
@@ -122,6 +120,18 @@ func _on_head_area_entered(area: Area2D) -> void:
 			var hole = blackhole.instantiate()
 			hole.position = rand_pos()
 			add_child(hole)
-		#else:
-			
-		
+		else:
+			var snake_coords = snake_list.map(func(i): return i.position)
+			snake_coords = snake_coords.slice(1)
+			for i in range(length):
+				if i == snake_coords.size():
+					snake_list[i].queue_free()
+
+					var newBlock = block.instantiate()
+					newBlock.position = rand_pos()
+					add_child.call_deferred(newBlock)
+
+					snake_list = snake_list.slice(0, i)
+					set_length(i)
+				else:
+					snake_list[i].position = snake_coords[i]
